@@ -2,57 +2,59 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 
 const Blog = () => {
   const posts = [
     {
-      id: "01",
-      tag: "AI_SYSTEMS",
+      slug: "ai-agents-for-startups",
       title: "5 AI Agents Every Startup Should Deploy in 2026",
-      excerpt: "The technical advantage of autonomous support and sales agents.",
-      link: "/blog/ai-agents-for-startups"
+      tag: "AI for Startups",
+      readTime: "8 min read",
+      date: "March 23, 2026",
+      excerpt: "If you're launching a startup in 2026 and you're not using AI agents, you're competing with one hand tied behind your back."
     },
     {
-      id: "02",
-      tag: "AUTOMATION",
+      slug: "automate-small-business",
       title: "The Complete Guide to Automating Your Small Business",
-      excerpt: "How to eliminate 20+ hours of manual work per week.",
-      link: "/blog/automate-small-business"
+      tag: "Automation",
+      readTime: "10 min read",
+      date: "March 23, 2026",
+      excerpt: "You didn't start your business to spend half your day on data entry and manual follow-up emails. Here is how to fix it."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-black bg-grid">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      <section className="pt-64 pb-32 px-6">
+      <section className="hero-gradient pt-40 pb-24 px-6 text-center">
         <div className="container-custom">
-          <SectionLabel>The Changelog</SectionLabel>
-          <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-24">Insights.</h1>
-          
-          <div className="space-y-px bg-white/10 border border-white/10">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Blog</h1>
+          <p className="text-xl text-[#555] max-w-[800px] mx-auto">
+            Practical strategies for launching, growing, and automating your business with AI. New articles every Monday and Thursday.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-24 px-6">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {posts.map((post) => (
-              <Link 
-                key={post.id} 
-                to={post.link}
-                className="group bg-black p-12 flex flex-col md:flex-row md:items-center justify-between hover:bg-[#064e3b]/10 transition-all"
-              >
-                <div className="max-w-[600px]">
-                  <div className="mono text-[#064e3b] text-xs font-bold mb-4 tracking-widest">
-                    [{post.id}] // {post.tag}
-                  </div>
-                  <h3 className="text-3xl md:text-4xl group-hover:text-[#064e3b] transition-colors">{post.title}</h3>
-                  <p className="text-white/40 mono mt-4">{post.excerpt}</p>
+              <Link key={post.slug} to={`/blog/${post.slug}`} className="group">
+                <div className="bg-[#f8f9fa] aspect-video rounded-[24px] mb-8 overflow-hidden border border-gray-100">
+                  <div className="w-full h-full brand-gradient opacity-10 group-hover:opacity-20 transition-opacity" />
                 </div>
-                <div className="mt-8 md:mt-0">
-                  <div className="w-16 h-16 border border-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-                    <ArrowRight />
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4">
+                    <span className="bg-[#6c5ce71a] text-[#6c5ce7] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{post.tag}</span>
+                    <span className="text-xs text-gray-400 font-bold uppercase tracking-widest">{post.date}</span>
                   </div>
+                  <h2 className="text-2xl md:text-3xl font-bold group-hover:text-[#6c5ce7] transition-colors">{post.title}</h2>
+                  <p className="text-[#555] leading-relaxed">{post.excerpt}</p>
+                  <div className="text-[#6c5ce7] font-bold text-sm uppercase tracking-widest">Read Article →</div>
                 </div>
               </Link>
             ))}

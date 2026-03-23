@@ -1,143 +1,83 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import { 
-  MousePointer2, BarChart3, MessageSquare, Zap, 
-  CheckCircle2, ArrowRight, Globe, Database, 
-  Bot, Workflow 
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Globe, BarChart3, Megaphone, Settings, Bot, Zap, Brain, ArrowRight } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 const Services = () => {
-  const reveal = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.5, ease: "easeOut" }
-  } as const;
+  const services = [
+    { title: "Website & Branding", icon: <Globe />, color: "bg-purple-50 text-purple-600", href: "/services/website-development", desc: "Custom, conversion-optimized websites and professional branding. From single landing pages to full multi-page sites." },
+    { title: "CRM & Sales Systems", icon: <BarChart3 />, color: "bg-blue-50 text-blue-600", href: "/services/crm-sales", desc: "Battle-tested CRM implementation and sales automation. Never lose a lead, automate follow-ups, and scale your sales pipeline." },
+    { title: "Marketing & Social", icon: <Megaphone />, color: "bg-amber-50 text-amber-600", href: "/services/marketing-branding", desc: "Build your digital presence with SEO, social media content, email marketing, and growth strategies that actually drive results." },
+    { title: "Operations & HR", icon: <Settings />, color: "bg-emerald-50 text-emerald-600", href: "/services/operations-hr", desc: "Streamline your operations with integrated tools, SOP creation, payroll setup, and HR systems that grow with your team." },
+    { title: "AI Agent Development", icon: <Bot />, color: "bg-violet-50 text-violet-600", href: "/services/ai-agents", desc: "Custom AI agents that handle customer support, qualify leads, book appointments, and answer questions — working 24/7." },
+    { title: "Workflow Automation", icon: <Zap />, color: "bg-cyan-50 text-cyan-600", href: "/services/ai-automation", desc: "Eliminate manual, repetitive work with intelligent automations that connect all your tools and trigger the right actions." },
+    { title: "AI Strategy Consulting", icon: <Brain />, color: "bg-pink-50 text-pink-600", href: "/services/ai-consulting", desc: "Not sure where AI fits? We audit your operations and build a roadmap to implement AI where it actually drives ROI." },
+  ];
 
-  const serviceDetails = [
-    {
-      id: "01",
-      title: "High-Conversion Web Architecture",
-      icon: <Globe className="text-[#064e3b]" size={40} />,
-      desc: "We don't build 'sites'. We build high-performance digital storefronts engineered for speed and conversion. Every line of code is optimized for SEO and user retention.",
-      features: [
-        "Custom React & Next.js Development",
-        "Edge-Network Content Delivery",
-        "Technical SEO & Core Web Vitals Optimization",
-        "Conversion Rate Optimization (CRO) Design"
-      ]
-    },
-    {
-      id: "02",
-      title: "Integrated CRM & Sales Systems",
-      icon: <Database className="text-[#064e3b]" size={40} />,
-      desc: "Your website should be your best salesperson. We integrate your site directly with industry-leading CRMs to ensure every lead is captured, scored, and tracked automatically.",
-      features: [
-        "CRM Setup & Custom Configuration",
-        "Automated Lead Scoring & Routing",
-        "Sales Pipeline Visualization",
-        "Real-time Data Synchronization"
-      ]
-    },
-    {
-      id: "03",
-      title: "Autonomous AI Agents",
-      icon: <Bot className="text-[#064e3b]" size={40} />,
-      desc: "Deploy 24/7 intelligent agents that handle customer support, qualify leads, and book meetings. Our AI agents learn your business and interact with customers in natural language.",
-      features: [
-        "Custom LLM Training on Your Data",
-        "Multi-channel Support (Web, WhatsApp, Email)",
-        "Automated Meeting Scheduling",
-        "Instant Lead Qualification"
-      ]
-    },
-    {
-      id: "04",
-      title: "End-to-End Workflow Automation",
-      icon: <Workflow className="text-[#064e3b]" size={40} />,
-      desc: "Eliminate manual busywork. We map your business processes and automate the repetitive tasks, saving your team 20+ hours every single week.",
-      features: [
-        "Automated Email & SMS Sequences",
-        "Invoice & Payment Automation",
-        "Internal Task Routing & Notifications",
-        "Cross-Platform Data Integrations"
-      ]
-    }
+  const addOns = [
+    { name: "SEO Optimization", price: "$199", desc: "One-time setup" },
+    { name: "Design & Branding", price: "$499", desc: "Full package" },
+    { name: "Social Media Content", price: "$99+", desc: "5-15 posts" },
+    { name: "Email System Setup", price: "$299", desc: "Full configuration" },
+    { name: "Analytics & Reporting", price: "$299", desc: "GA4 & Dashboards" },
   ];
 
   return (
-    <div className="min-h-screen bg-black bg-grid relative">
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero */}
-      <section className="pt-64 pb-32 px-6 border-b border-white/10">
+      <section className="hero-gradient pt-40 pb-24 px-6 text-center">
         <div className="container-custom">
-          <motion.div {...reveal}>
-            <SectionLabel>The Capabilities</SectionLabel>
-            <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-12 font-black uppercase tracking-tighter">
-              Our <br /> <span className="text-[#064e3b]">Services.</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/40 max-w-[800px] mono leading-relaxed">
-              We provide the technical foundation for modern businesses. From initial architecture to autonomous operations, we build the systems that drive growth.
-            </p>
-          </motion.div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Our Services</h1>
+          <p className="text-xl text-[#555] max-w-[800px] mx-auto">
+            Complete business launch packages or individual services tailored to your needs. We handle the full stack so you can focus on what matters.
+          </p>
         </div>
       </section>
 
-      {/* Detailed Services List */}
-      <section className="py-32 px-6">
+      <section className="py-24 px-6">
         <div className="container-custom">
-          <div className="space-y-32">
-            {serviceDetails.map((service, index) => (
-              <motion.div 
-                key={service.id}
-                {...reveal}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-20 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
-              >
-                <div className={index % 2 !== 0 ? 'lg:order-2' : ''}>
-                  <div className="mono text-[#064e3b] text-sm font-bold mb-6 tracking-widest">
-                    [{service.id}] // MODULE_SPEC
-                  </div>
-                  <div className="mb-8">{service.icon}</div>
-                  <h2 className="text-4xl md:text-5xl mb-8 font-black uppercase tracking-tighter">{service.title}</h2>
-                  <p className="text-white/50 mono text-lg leading-relaxed mb-10">
-                    {service.desc}
-                  </p>
-                  <ul className="space-y-4">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-4 mono text-sm text-white/70 uppercase tracking-widest">
-                        <CheckCircle2 size={18} className="text-[#064e3b]" /> {feature}
-                      </li>
-                    ))}
-                  </ul>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-32">
+            {services.map((s, i) => (
+              <Link key={i} to={s.href} className="bg-white p-10 rounded-[24px] border border-gray-100 hover-lift group">
+                <div className={cn("w-16 h-16 rounded-[16px] flex items-center justify-center mb-8 transition-transform group-hover:scale-110", s.color)}>
+                  {React.cloneElement(s.icon as React.ReactElement<any>, { size: 32 })}
                 </div>
-                <div className={`aspect-video bg-white/5 border border-white/10 relative overflow-hidden group ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#064e3b]/20 to-transparent opacity-50 group-hover:opacity-80 transition-opacity" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="mono text-[0.6rem] text-white/10 p-8 whitespace-pre font-bold">
-                      {`// INITIALIZING_${service.title.toUpperCase().replace(/ /g, '_')}\n// LOADING_RESOURCES...\n// OPTIMIZING_PERFORMANCE...\n// STATUS: READY`}
-                    </div>
-                  </div>
+                <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
+                <p className="text-[#555] leading-relaxed mb-8">{s.desc}</p>
+                <div className="text-[#6c5ce7] font-bold flex items-center gap-2">
+                  View Details <ArrowRight size={18} />
                 </div>
-              </motion.div>
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-[#064e3b] text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-5xl md:text-7xl mb-12 font-black uppercase tracking-tighter">Ready to Upgrade <br /> Your Infrastructure?</h2>
-          <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer" className="bg-white text-black px-12 py-6 text-xl font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all inline-block">
-            Book a Technical Audit
-          </a>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Individual Add-Ons</h2>
+            <p className="text-[#555]">Need just one specific thing? We offer individual services too.</p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-24">
+            {addOns.map((a, i) => (
+              <div key={i} className="bg-[#f8f9fa] p-8 rounded-[20px] text-center border border-gray-50">
+                <div className="text-2xl font-bold text-[#1a1a2e] mb-1">{a.price}</div>
+                <div className="font-bold text-[#6c5ce7] text-sm mb-4">{a.name}</div>
+                <div className="text-xs text-gray-400 uppercase tracking-widest font-bold">{a.desc}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Button asChild className="bg-[#6c5ce7] hover:bg-[#5b4cdb] text-white px-10 py-7 rounded-[12px] font-bold text-lg">
+              <Link to="/assessment">Take the Free Assessment</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
