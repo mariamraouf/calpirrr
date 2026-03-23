@@ -3,219 +3,192 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Terminal, Cpu, Activity, Layers, 
-  Code2, Zap, CheckCircle2, Rocket, MousePointer2,
-  MessageSquare, BarChart3
+  ArrowRight, Rocket, MousePointer2, 
+  MessageSquare, BarChart3, Zap, CheckCircle2,
+  Clock, Shield, Star
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import ROICalculator from '@/components/home/ROICalculator';
+import { Button } from '@/components/ui/button';
 
 const Index = () => {
   const reveal = {
     initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.5, ease: "easeOut" }
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
   } as const;
 
   return (
-    <div className="min-h-screen bg-black bg-grid relative">
-      <div className="scanline" />
+    <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero: The 7-Day Promise */}
-      <section className="pt-64 pb-32 px-6 border-b border-white/10">
+      {/* Hero Section */}
+      <section className="hero-gradient pt-40 pb-24 px-6">
+        <div className="container-custom text-center">
+          <motion.div {...reveal}>
+            <div className="inline-flex items-center gap-2 bg-purple-50 text-[#6c5ce7] px-4 py-2 rounded-full text-sm font-bold mb-8">
+              <Star size={16} fill="currentColor" />
+              <span>The #1 Business Launch Partner</span>
+            </div>
+            <h1 className="text-[2.5rem] md:text-[4.5rem] leading-[1.1] font-[800] mb-8 text-[#1a1a2e]">
+              Launch Your Business <br /> <span className="text-[#6c5ce7]">In Just 7 Days.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-500 max-w-[700px] mx-auto mb-12 leading-relaxed">
+              We build your high-conversion website, integrated CRM, and AI automation into a single, high-performance engine. Stop managing tools, start managing growth.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer" className="btn-premium">
+                Get Started Now <ArrowRight size={18} />
+              </a>
+              <Link to="/services" className="px-8 py-4 rounded-full font-bold text-gray-600 hover:text-[#6c5ce7] transition-colors">
+                View Our Services
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className="py-12 border-y border-gray-50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-8">
-              <motion.div {...reveal}>
-                <div className="mono text-[#064e3b] mb-6 font-bold tracking-[0.4em] text-sm flex items-center gap-3">
-                  <span className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#064e3b] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-[#064e3b]"></span>
-                  </span>
-                  [ READY_FOR_DEPLOYMENT ]
-                </div>
-                <h1 className="text-5xl md:text-[8rem] leading-[0.9] mb-12 font-black uppercase tracking-tighter">
-                  Your Entire <br /> <span className="text-[#064e3b]">Business Stack</span> <br /> in 7 Days.
-                </h1>
-                <p className="text-xl md:text-2xl text-white/50 max-w-[650px] mb-12 mono leading-relaxed">
-                  Stop stitching together separate tools. We build your high-conversion website, CRM, AI agents, and automation workflows into a single, high-performance engine.
-                </p>
-                <div className="flex flex-wrap gap-6">
-                  <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer" className="btn-pro group">
-                    Launch My Business <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </a>
-                  <div className="flex items-center gap-4 px-8 border border-white/10 mono text-[0.7rem] font-bold tracking-widest uppercase text-white/40">
-                    <Rocket size={14} className="text-[#064e3b]" /> 100% Bespoke Code
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-            <div className="lg:col-span-4 hidden lg:block">
-              <div className="border border-white/10 p-8 bg-white/5 backdrop-blur-sm relative">
-                <div className="absolute -top-4 -left-4 w-8 h-8 border-t-2 border-l-2 border-[#064e3b]" />
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 border-b-2 border-r-2 border-[#064e3b]" />
-                <div className="mono text-[0.65rem] text-white/30 space-y-2">
-                  <div className="flex justify-between"><span>MODULE_01:</span> <span className="text-[#064e3b]">WEBSITE</span></div>
-                  <div className="flex justify-between"><span>MODULE_02:</span> <span className="text-[#064e3b]">CRM_SYNC</span></div>
-                  <div className="flex justify-between"><span>MODULE_03:</span> <span className="text-[#064e3b]">AI_AGENTS</span></div>
-                  <div className="flex justify-between"><span>MODULE_04:</span> <span className="text-[#064e3b]">WORKFLOWS</span></div>
-                  <div className="pt-4 border-t border-white/10 mt-4">
-                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        transition={{ duration: 2, ease: "easeInOut" }}
-                        className="h-full bg-[#064e3b]"
-                      />
-                    </div>
-                    <div className="mt-2 text-right text-[#064e3b]">DEPLOYMENT_COMPLETE</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <p className="text-center text-sm font-bold text-gray-400 uppercase tracking-widest mb-8">Trusted by founders worldwide</p>
+          <div className="flex flex-wrap justify-center gap-12 md:gap-24 opacity-40 grayscale">
+            <div className="text-2xl font-black">STRIPE</div>
+            <div className="text-2xl font-black">LINEAR</div>
+            <div className="text-2xl font-black">VERCEL</div>
+            <div className="text-2xl font-black">NOTION</div>
           </div>
         </div>
       </section>
 
-      {/* The "What We Do" Grid */}
-      <section id="services" className="section-padding border-b border-white/10">
+      {/* The Pillars */}
+      <section id="services" className="section-padding">
         <div className="container-custom">
-          <SectionLabel>The Full Stack</SectionLabel>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
+          <div className="text-center mb-20">
+            <h2 className="text-3xl md:text-5xl font-black mb-6">The Full-Stack Solution</h2>
+            <p className="text-gray-500 max-w-[600px] mx-auto">Everything you need to run a modern, automated business from day one.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               { 
                 title: "High-Conversion Web", 
-                icon: <MousePointer2 />, 
-                desc: "Not just a pretty site. A technical masterpiece built for speed, SEO, and turning visitors into customers.",
-                features: ["Custom React/Next.js", "Edge Delivery", "SEO Optimized"]
+                icon: <MousePointer2 className="text-[#6c5ce7]" />, 
+                desc: "A technical masterpiece built for speed, SEO, and turning visitors into loyal customers.",
+                features: ["Custom React/Next.js", "SEO Optimized", "Mobile First"]
               },
               { 
                 title: "Integrated CRM", 
-                icon: <BarChart3 />, 
-                desc: "We set up and sync your sales pipeline so you never lose a lead. Every click is tracked and managed.",
-                features: ["Lead Scoring", "Pipeline Automation", "Data Sync"]
+                icon: <BarChart3 className="text-[#6c5ce7]" />, 
+                desc: "We sync your sales pipeline so you never lose a lead. Every click is tracked and managed.",
+                features: ["Lead Scoring", "Pipeline Sync", "Data Analytics"]
               },
               { 
                 title: "24/7 AI Agents", 
-                icon: <MessageSquare />, 
+                icon: <MessageSquare className="text-[#6c5ce7]" />, 
                 desc: "Autonomous agents that handle support, qualify leads, and book meetings while you sleep.",
-                features: ["Natural Language", "Instant Response", "Auto-Booking"]
+                features: ["Natural Language", "Auto-Booking", "Instant Support"]
               },
               { 
                 title: "Workflow Automation", 
-                icon: <Zap />, 
-                desc: "We eliminate your manual busywork. If it's repetitive, we automate it. Save 20+ hours every week.",
+                icon: <Zap className="text-[#6c5ce7]" />, 
+                desc: "We eliminate manual busywork. If it's repetitive, we automate it. Save 20+ hours weekly.",
                 features: ["Email Sequences", "Invoice Automation", "Task Routing"]
               }
             ].map((s, i) => (
               <motion.div 
                 key={i} 
                 {...reveal}
-                className="bg-black p-12 hover:bg-[#064e3b]/5 transition-all group"
+                className="card-premium group"
               >
-                <div className="text-[#064e3b] mb-8 group-hover:scale-110 transition-transform">
-                  {React.cloneElement(s.icon as React.ReactElement<any>, { size: 32 })}
+                <div className="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                  {React.cloneElement(s.icon as React.ReactElement<any>, { size: 28 })}
                 </div>
-                <h3 className="text-3xl mb-6 font-black uppercase tracking-tighter">{s.title}</h3>
-                <p className="text-white/40 mono text-sm leading-relaxed mb-8">{s.desc}</p>
-                <ul className="space-y-3">
+                <h3 className="text-2xl mb-4 font-bold">{s.title}</h3>
+                <p className="text-gray-500 leading-relaxed mb-8">{s.desc}</p>
+                <div className="flex flex-wrap gap-3">
                   {s.features.map(f => (
-                    <li key={f} className="flex items-center gap-3 mono text-[0.65rem] text-white/60 uppercase tracking-widest">
-                      <CheckCircle2 size={12} className="text-[#064e3b]" /> {f}
-                    </li>
+                    <span key={f} className="bg-gray-50 text-gray-500 text-[0.75rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                      {f}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The "Why Calpir" Section */}
-      <section className="section-padding border-b border-white/10 bg-white/5">
+      {/* Why Us */}
+      <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <SectionLabel>The Advantage</SectionLabel>
-              <h2 className="text-5xl md:text-7xl mb-8 font-black uppercase tracking-tighter">Why Founders <br /> Choose Us.</h2>
-              <p className="text-white/40 mono text-lg leading-relaxed mb-12">
-                Traditional agencies take 3 months to build a site that doesn't talk to your CRM. We build your entire operational engine in 7 days.
-              </p>
+              <h2 className="text-4xl md:text-5xl font-black mb-8">Why Founders <br /> Choose Calpir.</h2>
               <div className="space-y-8">
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 border border-[#064e3b] flex items-center justify-center shrink-0">
-                    <span className="text-[#064e3b] font-bold">01</span>
+                {[
+                  { title: "Speed to Market", icon: <Clock />, desc: "Launch in 7 days, not 3 months. We use a proven framework to deploy your entire stack fast." },
+                  { title: "Unified Systems", icon: <Shield />, desc: "Your website, CRM, and AI work as one. No more manual data entry or lost leads." },
+                  { title: "Senior Execution", icon: <Rocket />, desc: "Built by senior engineers. Clean code, extreme performance, and zero technical debt." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-6">
+                    <div className="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center shrink-0 text-[#6c5ce7]">
+                      {React.cloneElement(item.icon as React.ReactElement<any>, { size: 24 })}
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold mb-2">{item.title}</h4>
+                      <p className="text-gray-500">{item.desc}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 uppercase">Speed to Market</h4>
-                    <p className="text-white/40 mono text-sm">Launch in days, not months. We use a proven technical framework to deploy fast.</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 border border-[#064e3b] flex items-center justify-center shrink-0">
-                    <span className="text-[#064e3b] font-bold">02</span>
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 uppercase">Unified Systems</h4>
-                    <p className="text-white/40 mono text-sm">Your website, CRM, and AI work as one. No more manual data entry or lost leads.</p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 border border-[#064e3b] flex items-center justify-center shrink-0">
-                    <span className="text-[#064e3b] font-bold">03</span>
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 uppercase">Pro Execution</h4>
-                    <p className="text-white/40 mono text-sm">Built by senior engineers. Clean code, extreme performance, and zero technical debt.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square border border-white/10 bg-black p-12 flex flex-col justify-center">
-                <div className="space-y-12">
-                  <div className="text-center">
-                    <div className="text-6xl font-black text-[#064e3b] mb-2">7 DAYS</div>
-                    <div className="mono text-[0.7rem] uppercase tracking-[0.3em] text-white/40">Average Deployment</div>
+              <div className="bg-white p-12 rounded-[3rem] shadow-2xl shadow-purple-100 border border-purple-50">
+                <div className="space-y-10">
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-gray-400 uppercase tracking-widest text-sm">Deployment Time</span>
+                    <span className="text-3xl font-black text-[#6c5ce7]">7 Days</span>
                   </div>
-                  <div className="blueprint-line" />
-                  <div className="text-center">
-                    <div className="text-6xl font-black text-[#064e3b] mb-2">20+ HRS</div>
-                    <div className="mono text-[0.7rem] uppercase tracking-[0.3em] text-white/40">Weekly Time Saved</div>
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#6c5ce7] w-full" />
                   </div>
-                  <div className="blueprint-line" />
-                  <div className="text-center">
-                    <div className="text-6xl font-black text-[#064e3b] mb-2">24/7</div>
-                    <div className="mono text-[0.7rem] uppercase tracking-[0.3em] text-white/40">Autonomous Growth</div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-gray-400 uppercase tracking-widest text-sm">Weekly Time Saved</span>
+                    <span className="text-3xl font-black text-[#6c5ce7]">20+ Hrs</span>
+                  </div>
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#6c5ce7] w-[85%]" />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-bold text-gray-400 uppercase tracking-widest text-sm">Efficiency Gain</span>
+                    <span className="text-3xl font-black text-[#6c5ce7]">40%</span>
+                  </div>
+                  <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-full bg-[#6c5ce7] w-[70%]" />
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#064e3b]/10 blur-3xl rounded-full" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ROI: The Logic */}
-      <ROICalculator />
-
-      {/* CTA: The Final Command */}
-      <section id="contact" className="section-padding bg-[#064e3b] text-white">
-        <div className="container-custom text-center">
-          <motion.div {...reveal}>
-            <h2 className="text-6xl md:text-[10rem] mb-12 leading-none font-black uppercase tracking-tighter">Ready to <br /> Initialize?</h2>
-            <p className="mono text-xl mb-16 opacity-80 max-w-[600px] mx-auto">
-              Stop managing tools. Start managing growth. Book your 30-minute technical strategy session.
+      {/* CTA Section */}
+      <section id="contact" className="section-padding">
+        <div className="container-custom">
+          <div className="brand-gradient rounded-[3rem] p-12 md:p-24 text-center text-white shadow-2xl shadow-purple-200">
+            <h2 className="text-4xl md:text-6xl font-black mb-8">Ready to Initialize?</h2>
+            <p className="text-xl opacity-90 max-w-[600px] mx-auto mb-12">
+              Stop managing tools. Start managing growth. Book your 30-minute technical strategy session today.
             </p>
-            <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer" className="bg-white text-black px-16 py-8 text-2xl font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all inline-block">
-              Execute Strategy
+            <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer" className="bg-white text-[#6c5ce7] px-12 py-6 rounded-full text-xl font-black hover:bg-gray-50 transition-all inline-block shadow-xl">
+              Book My Strategy Session
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
