@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: '01 // Services', href: '/#services' },
+    { name: '01 // Services', href: '/services' },
     { name: '02 // About', href: '/about' },
     { name: '03 // Blog', href: '/blog' },
     { name: '04 // Contact', href: '/#contact' },
