@@ -12,10 +12,10 @@ interface SectionLabelProps {
 const SectionLabel = ({ children, className, variant = 'light' }: SectionLabelProps) => {
   return (
     <span className={cn(
-      "inline-block px-4 py-1.5 rounded-full text-[0.8rem] font-semibold uppercase tracking-wider mb-6",
+      "inline-block px-5 py-2 rounded-full text-[0.75rem] font-bold uppercase tracking-[0.15em] mb-8 border",
       variant === 'light' 
-        ? "bg-[#6c5ce71a] text-[#6c5ce7]" 
-        : "bg-[#a29bfe33] text-[#a29bfe]",
+        ? "bg-[#064e3b]/5 text-[#064e3b] border-[#064e3b]/10" 
+        : "bg-white/10 text-white border-white/20",
       className
     )}>
       {children}

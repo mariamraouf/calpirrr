@@ -19,86 +19,67 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Services', href: '/#services' },
-    { name: 'AI Solutions', href: '/#ai' },
-    { name: 'Packages', href: '/#packages' },
-    { name: 'Process', href: '/#process' },
+    { name: 'Solutions', href: '/#solutions' },
+    { name: 'Pricing', href: '/#packages' },
     { name: 'Blog', href: '/blog' },
   ];
 
-  const handleNavClick = (href: string) => {
-    setIsOpen(false);
-    if (href.startsWith('/#') && location.pathname === '/') {
-      const id = href.split('#')[1];
-      const element = document.getElementById(id);
-      if (element) {
-        const offset = 80;
-        const bodyRect = document.body.getBoundingClientRect().top;
-        const elementRect = element.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition - offset;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }
-    }
-  };
-
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-[100] transition-all duration-300 border-b",
-      scrolled ? "bg-white/95 backdrop-blur-md py-3 border-[#e8e8e8]" : "bg-transparent py-5 border-transparent"
+      "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
+      scrolled ? "bg-white/80 backdrop-blur-xl py-4 border-b border-black/5" : "bg-transparent py-6 border-transparent"
     )}>
-      <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-0.5 text-2xl font-extrabold tracking-tight">
-          <span className="text-[#0a0a0a]">cal</span>
-          <span className="text-[#6c5ce7]">pir</span>
+      <div className="container-custom flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-3 group">
+          <div className="w-10 h-10 bg-[#064e3b] rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
+            <img src="/Calpir.jpg" alt="Calpir Logo" className="w-full h-full object-cover" />
+          </div>
+          <span className="text-2xl font-bold tracking-tighter text-[#064e3b]">Calpir</span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-[0.95rem] font-medium text-[#1a1a2e] hover:text-[#6c5ce7] transition-colors"
+              className="text-[0.9rem] font-semibold text-black/60 hover:text-[#064e3b] transition-colors"
             >
               {link.name}
             </Link>
           ))}
           <Button 
             asChild
-            className="bg-[#6c5ce7] hover:bg-[#5b4cdb] text-white rounded-[8px] px-6 font-semibold transition-transform hover:-translate-y-0.5"
+            className="bg-[#064e3b] hover:bg-[#053f30] text-white rounded-full px-8 h-12 font-bold shadow-lg shadow-[#064e3b]/10"
           >
-            <Link to="/#contact" onClick={() => handleNavClick('/#contact')}>Free Consultation</Link>
+            <Link to="/#contact">Get Started</Link>
           </Button>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden text-[#1a1a2e]" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        <button className="md:hidden text-black" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       <div className={cn(
-        "md:hidden absolute top-full left-0 right-0 bg-white border-b border-[#e8e8e8] transition-all duration-300 overflow-hidden",
-        isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        "md:hidden absolute top-full left-0 right-0 bg-white border-b border-black/5 transition-all duration-300 overflow-hidden",
+        isOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
       )}>
-        <div className="flex flex-col p-6 gap-4">
+        <div className="flex flex-col p-8 gap-6">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-lg font-medium py-2 border-b border-[#e8e8e8] last:border-0"
+              onClick={() => setIsOpen(false)}
+              className="text-xl font-bold"
             >
               {link.name}
             </Link>
           ))}
-          <Button 
-            asChild
-            className="bg-[#6c5ce7] hover:bg-[#5b4cdb] text-white rounded-[8px] py-6 text-lg font-semibold mt-2"
-          >
-            <Link to="/#contact" onClick={() => handleNavClick('/#contact')}>Free Consultation</Link>
+          <Button asChild className="bg-[#064e3b] w-full py-7 text-lg rounded-xl">
+            <Link to="/#contact">Get Started</Link>
           </Button>
         </div>
       </div>
