@@ -1,10 +1,9 @@
 "use client";
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { 
-  ArrowRight, Check, Globe, BarChart3, Megaphone, Settings, 
-  TrendingUp, Briefcase, Zap, Shield, Users, Clock
+  ArrowRight, Globe, BarChart3, Zap, Shield, Users, Clock, Play
 } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -12,217 +11,234 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import ROICalculator from '@/components/home/ROICalculator';
 import { Button } from '@/components/ui/button';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { cn } from '@/lib/utils';
 
 const Index = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] }
+  };
+
   return (
-    <div className="min-h-screen bg-[#fcfcfc]">
+    <div className="min-h-screen bg-[#fcfcfc] grain-overlay">
       <Navbar />
       
-      {/* Hero: Editorial Style */}
-      <section className="pt-48 pb-32 px-6">
-        <div className="container-custom">
-          <div className="max-w-[900px]">
-            <SectionLabel className="bg-[#064e3b]/5 text-[#064e3b] border border-[#064e3b]/10">
-              Operational Excellence for Founders
-            </SectionLabel>
-            <h1 className="text-[3.5rem] md:text-[5.5rem] font-bold leading-[0.95] tracking-tighter mb-8 text-[#064e3b] text-balance">
-              Build a business that <br className="hidden md:block" /> runs itself.
-            </h1>
-            <p className="text-xl md:text-2xl text-black/60 max-w-[650px] mb-12 leading-relaxed font-medium">
-              We design and deploy the infrastructure your company needs to scale—from high-conversion websites to automated sales pipelines.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild className="bg-[#064e3b] hover:bg-[#053f30] text-white px-10 h-16 rounded-full font-bold text-lg shadow-2xl shadow-[#064e3b]/20 transition-all hover:scale-105">
-                <a href="#contact">Book a Strategy Call</a>
-              </Button>
-              <Button asChild variant="ghost" className="px-10 h-16 rounded-full font-bold text-lg hover:bg-black/5">
-                <a href="#services" className="flex items-center gap-2">
-                  Our Services <ArrowRight size={20} />
-                </a>
-              </Button>
+      {/* Hero: High-End Editorial */}
+      <section className="relative pt-48 pb-32 px-6 overflow-hidden">
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-7">
+              <motion.div {...fadeInUp}>
+                <SectionLabel className="bg-[#064e3b]/5 text-[#064e3b] border-[#064e3b]/10">
+                  The Architect of Scale
+                </SectionLabel>
+                <h1 className="text-[3.5rem] md:text-[6.5rem] font-bold leading-[0.9] tracking-tighter mb-8 text-[#064e3b] text-balance">
+                  Infrastructure <br /> for the <span className="italic font-serif text-[#064e3b]/40">Ambitious.</span>
+                </h1>
+                <p className="text-xl md:text-2xl text-black/60 max-w-[550px] mb-12 leading-relaxed font-medium">
+                  We don't just build websites. We deploy the entire operational engine your business needs to dominate its market.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <Button asChild className="bg-[#064e3b] hover:bg-[#053f30] text-white px-12 h-20 rounded-full font-bold text-xl shadow-2xl shadow-[#064e3b]/20 transition-all hover:scale-105">
+                    <a href="#contact">Start Your Build</a>
+                  </Button>
+                  <button className="flex items-center gap-4 group">
+                    <div className="w-16 h-16 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-[#064e3b] group-hover:text-white transition-all">
+                      <Play size={20} fill="currentColor" />
+                    </div>
+                    <span className="font-bold text-lg">Watch the Process</span>
+                  </button>
+                </div>
+              </motion.div>
+            </div>
+            
+            <div className="lg:col-span-5 relative">
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="relative z-10"
+              >
+                <div className="rounded-[2rem] overflow-hidden shadow-2xl border-[12px] border-white">
+                  <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" 
+                    alt="Modern Architecture" 
+                    className="w-full h-[600px] object-cover"
+                  />
+                </div>
+                {/* Floating Stats Card */}
+                <motion.div 
+                  animate={{ y: [0, -20, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-10 -left-10 glass-card p-8 rounded-3xl max-w-[240px]"
+                >
+                  <div className="text-4xl font-bold text-[#064e3b] mb-2">7 Days</div>
+                  <p className="text-sm font-bold text-black/40 uppercase tracking-widest">Average Launch Time</p>
+                </motion.div>
+              </motion.div>
+              
+              {/* Background Decorative Shape */}
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#064e3b]/5 rounded-full blur-3xl" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof: Minimalist */}
-      <section className="py-12 border-y border-black/5 bg-white">
-        <div className="container-custom flex flex-wrap justify-between items-center gap-8 opacity-40 grayscale">
-          <span className="text-xl font-bold tracking-tighter">FORBES</span>
-          <span className="text-xl font-bold tracking-tighter">TECHCRUNCH</span>
-          <span className="text-xl font-bold tracking-tighter">WIRED</span>
-          <span className="text-xl font-bold tracking-tighter">FAST COMPANY</span>
-          <span className="text-xl font-bold tracking-tighter">THE VERGE</span>
-        </div>
-      </section>
-
-      {/* Services: Clean Cards */}
-      <section id="services" className="section-padding">
+      {/* Services: Visual Grid */}
+      <section id="services" className="section-padding bg-white">
         <div className="container-custom">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-[600px]">
-              <SectionLabel>Capabilities</SectionLabel>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#064e3b]">The Full Stack of <br /> Business Growth.</h2>
-            </div>
-            <p className="text-lg text-black/50 max-w-[400px] mb-2">
-              We don't just give advice. We build the actual systems that drive your revenue and free up your time.
+          <motion.div {...fadeInUp} className="text-center mb-24">
+            <SectionLabel>Capabilities</SectionLabel>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#064e3b] mb-8">The Full Stack.</h2>
+            <p className="text-xl text-black/50 max-w-[600px] mx-auto">
+              We replace your fragmented agency relationships with a single, high-performance operational partner.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {[
               {
-                title: "Digital Presence",
-                icon: <Globe size={24} />,
-                desc: "High-performance websites that don't just look good—they convert visitors into customers.",
-                features: ["Custom Architecture", "SEO Strategy", "Conversion Design"]
+                title: "Digital Architecture",
+                img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+                desc: "High-conversion platforms built on modern stacks. No templates, no bloat, just performance.",
+                tags: ["Custom Dev", "SEO", "UX Design"]
               },
               {
                 title: "Sales Infrastructure",
-                icon: <BarChart3 size={24} />,
-                desc: "CRM setups and sales pipelines that ensure no lead ever falls through the cracks.",
-                features: ["HubSpot/GHL Setup", "Lead Scoring", "Automated Follow-ups"]
-              },
-              {
-                title: "Workflow Automation",
-                icon: <Zap size={24} />,
-                desc: "Eliminate manual work by connecting your tools into a single, cohesive ecosystem.",
-                features: ["Tool Integration", "Custom Automations", "Process Audits"]
-              },
-              {
-                title: "Brand Strategy",
-                icon: <Shield size={24} />,
-                desc: "Positioning your business as the authority in your market through premium design.",
-                features: ["Visual Identity", "Market Positioning", "Messaging Framework"]
-              },
-              {
-                title: "Operations & HR",
-                icon: <Users size={24} />,
-                desc: "The back-office systems required to manage a growing team without the chaos.",
-                features: ["Hiring Workflows", "Internal Wikis", "Project Management"]
-              },
-              {
-                title: "Growth Analytics",
-                icon: <TrendingUp size={24} />,
-                desc: "Real-time dashboards that show you exactly where your growth is coming from.",
-                features: ["KPI Tracking", "Custom Dashboards", "ROI Reporting"]
+                img: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+                desc: "Automated pipelines that qualify leads and book meetings while you sleep.",
+                tags: ["CRM Setup", "Lead Scoring", "Automation"]
               }
             ].map((s, i) => (
-              <div key={i} className="group p-10 bg-white border border-black/5 rounded-3xl hover:border-[#064e3b]/20 transition-all duration-500 hover:shadow-2xl hover:shadow-[#064e3b]/5">
-                <div className="w-12 h-12 bg-[#064e3b]/5 text-[#064e3b] rounded-2xl flex items-center justify-center mb-8 group-hover:bg-[#064e3b] group-hover:text-white transition-colors duration-500">
-                  {s.icon}
+              <motion.div 
+                key={i} 
+                {...fadeInUp}
+                whileHover={{ y: -10 }}
+                className="group relative overflow-hidden rounded-[3rem] bg-[#f4f7f5]"
+              >
+                <div className="h-[400px] overflow-hidden">
+                  <img 
+                    src={s.img} 
+                    alt={s.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{s.title}</h3>
-                <p className="text-black/50 mb-8 leading-relaxed">{s.desc}</p>
-                <ul className="space-y-3">
-                  {s.features.map((f, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm font-bold text-[#064e3b]/70">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#064e3b]" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <div className="p-12">
+                  <h3 className="text-3xl font-bold mb-4">{s.title}</h3>
+                  <p className="text-lg text-black/50 mb-8 leading-relaxed">{s.desc}</p>
+                  <div className="flex gap-3">
+                    {s.tags.map(tag => (
+                      <span key={tag} className="px-4 py-2 bg-white rounded-full text-xs font-bold uppercase tracking-widest border border-black/5">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The "Anti-AI" Section: Focus on Human Results */}
-      <section className="section-padding bg-[#064e3b] text-white rounded-[3rem] mx-6">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <SectionLabel className="bg-white/10 text-white border-white/20">Our Philosophy</SectionLabel>
-              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-8">Systems built for humans, <br /> not just algorithms.</h2>
-              <p className="text-xl text-white/70 mb-12 leading-relaxed">
-                In a world of generic AI-generated noise, we focus on high-touch, high-impact systems that actually work for your team and your customers.
+      {/* Philosophy: Immersive Parallax-style */}
+      <section className="relative py-48 px-6 bg-[#064e3b] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=2000" 
+            className="w-full h-full object-cover"
+            alt="Office Background"
+          />
+        </div>
+        <div className="container-custom relative z-10">
+          <div className="max-w-[800px]">
+            <motion.div {...fadeInUp}>
+              <SectionLabel variant="dark">Our Philosophy</SectionLabel>
+              <h2 className="text-5xl md:text-8xl font-bold tracking-tighter mb-12 leading-[0.9]">
+                We build for <br /> <span className="text-white/30 italic font-serif">Humans</span>, not <br /> just data.
+              </h2>
+              <p className="text-2xl text-white/70 mb-16 leading-relaxed">
+                In an era of automated noise, we focus on high-touch systems that create genuine connection and lasting value.
               </p>
-              <div className="space-y-8">
-                {[
-                  { title: "Speed to Market", desc: "We launch full infrastructures in weeks, not months.", icon: <Clock /> },
-                  { title: "Integrated Thinking", desc: "Your website, CRM, and marketing should be one single machine.", icon: <Settings /> },
-                  { title: "Founder-Led", desc: "We've built companies ourselves. We know what matters.", icon: <Briefcase /> }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-6">
-                    <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
-                      {React.cloneElement(item.icon as React.ReactElement<any>, { size: 24 })}
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="space-y-4">
+                  <div className="text-4xl font-bold">1,000+</div>
+                  <p className="text-white/50 font-bold uppercase tracking-widest text-sm">Founders Empowered</p>
+                </div>
+                <div className="space-y-4">
+                  <div className="text-4xl font-bold">40%</div>
+                  <p className="text-white/50 font-bold uppercase tracking-widest text-sm">Average Revenue Increase</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Calculator: Integrated */}
+      <motion.div {...fadeInUp}>
+        <ROICalculator />
+      </motion.div>
+
+      {/* Testimonials: Clean & Bold */}
+      <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20">
+            <div className="lg:col-span-4">
+              <SectionLabel>Success</SectionLabel>
+              <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#064e3b]">What they say.</h2>
+            </div>
+            <div className="lg:col-span-8 space-y-24">
+              {[
+                {
+                  quote: "Calpir didn't just give us a website; they gave us a sales engine. Our conversion rate doubled in the first month.",
+                  author: "Alex Rivera",
+                  role: "Founder, Nexus"
+                },
+                {
+                  quote: "The automation setup saves my team 30 hours a week. It's the best investment we've made this year.",
+                  author: "Sarah Chen",
+                  role: "CEO, Bloom"
+                }
+              ].map((t, i) => (
+                <motion.div key={i} {...fadeInUp} className="border-b border-black/5 pb-16 last:border-0">
+                  <p className="text-3xl md:text-5xl font-medium mb-12 leading-tight text-black/80">
+                    "{t.quote}"
+                  </p>
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 rounded-full bg-[#064e3b]/10" />
                     <div>
-                      <h4 className="text-xl font-bold mb-1">{item.title}</h4>
-                      <p className="text-white/60">{item.desc}</p>
+                      <div className="font-bold text-xl">{t.author}</div>
+                      <div className="text-black/40 uppercase text-xs tracking-widest font-bold mt-1">{t.role}</div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="aspect-square bg-white/5 rounded-full flex items-center justify-center p-12 border border-white/10">
-                <div className="text-center">
-                  <div className="text-[8rem] font-bold tracking-tighter leading-none mb-4">7</div>
-                  <div className="text-2xl font-bold uppercase tracking-widest opacity-50">Days to Launch</div>
-                </div>
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#1a5d1a]/30 rounded-full blur-3xl" />
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ROI Calculator: Integrated into the clean design */}
-      <ROICalculator />
-
-      {/* Testimonials: Minimalist */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="text-center mb-20">
-            <SectionLabel>Success Stories</SectionLabel>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter text-[#064e3b]">Trusted by 1,000+ Founders.</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              {
-                quote: "Calpir didn't just give us a website; they gave us a sales engine. Our conversion rate doubled in the first month.",
-                author: "Alex Rivera",
-                role: "Founder, Nexus"
-              },
-              {
-                quote: "The automation setup saves my team 30 hours a week. It's the best investment we've made this year.",
-                author: "Sarah Chen",
-                role: "CEO, Bloom"
-              },
-              {
-                quote: "Finally, a team that understands the technical side and the business side equally well. Highly recommended.",
-                author: "James Wilson",
-                role: "Founder, Forge"
-              }
-            ].map((t, i) => (
-              <div key={i} className="text-center">
-                <p className="text-2xl font-medium mb-8 leading-relaxed text-black/80 italic">"{t.quote}"</p>
-                <div className="font-bold text-lg">{t.author}</div>
-                <div className="text-black/40 uppercase text-xs tracking-widest font-bold mt-1">{t.role}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section id="contact" className="py-32 px-6 bg-white">
-        <div className="container-custom text-center">
-          <div className="max-w-[800px] mx-auto">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-[#064e3b] mb-8">Ready to scale?</h2>
-            <p className="text-xl text-black/50 mb-12 leading-relaxed">
-              Stop fighting your systems and start growing your business. <br /> Book a free 30-minute strategy session today.
+      {/* Final CTA: Immersive */}
+      <section id="contact" className="py-48 px-6 bg-[#f4f7f5] text-center relative overflow-hidden">
+        <div className="container-custom relative z-10">
+          <motion.div {...fadeInUp}>
+            <h2 className="text-6xl md:text-[9rem] font-bold tracking-tighter text-[#064e3b] mb-12 leading-none">
+              Ready to <br /> <span className="italic font-serif text-[#064e3b]/20">Scale?</span>
+            </h2>
+            <p className="text-2xl text-black/50 mb-16 max-w-[600px] mx-auto">
+              Stop fighting your systems and start growing your business. Book a free 30-minute strategy session.
             </p>
-            <Button asChild className="bg-[#064e3b] hover:bg-[#053f30] text-white px-12 h-20 rounded-full font-bold text-xl shadow-2xl shadow-[#064e3b]/20 transition-all hover:scale-105">
-              <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer">Book Your Strategy Call</a>
+            <Button asChild className="bg-[#064e3b] hover:bg-[#053f30] text-white px-16 h-24 rounded-full font-bold text-2xl shadow-2xl shadow-[#064e3b]/20 transition-all hover:scale-105">
+              <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer">Book Your Call</a>
             </Button>
-          </div>
+          </motion.div>
+        </div>
+        
+        {/* Decorative Background Elements */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-[#064e3b] rounded-full" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] border border-[#064e3b] rounded-full" />
         </div>
       </section>
 
