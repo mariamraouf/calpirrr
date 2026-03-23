@@ -1,0 +1,115 @@
+"use client";
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import { 
+  Globe, BarChart3, Megaphone, Settings, 
+  Bot, Zap, Brain 
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
+
+const nodes = [
+  { id: 'website', icon: <Globe size={20} />, label: 'Website', angle: 0 },
+  { id: 'crm', icon: <BarChart3 size={20} />, label: 'CRM', angle: 51.4 },
+  { id: 'marketing', icon: <Megaphone size={20} />, label: 'Marketing', angle: 102.8 },
+  { id: 'ops', icon: <Settings size={20} />, label: 'Operations', angle: 154.2 },
+  { id: 'ai-agents', icon: <Bot size={20} />, label: 'AI Agents', angle: 205.6 },
+  { id: 'automation', icon: <Zap size={20} />, label: 'Automation', angle: 257 },
+  { id: 'strategy', icon: <Brain size={20} />, label: 'AI Strategy', angle: 308.4 },
+];
+
+const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string, highlightedNode?: string }) => {
+  const radius = 160;
+  const centerX = 200;
+  const centerY = 200;
+
+  return (
+    <div className={cn("relative w-[400px] h-[400px] mx-auto", className)}>
+      <svg className="absolute inset-0 w-full h-full overflow-visible">
+        {/* Connecting Lines from Center */}
+        {nodes.map((node) => {
+          const x = centerX + radius * Math.cos((node.angle * Math.PI) / 180);
+          const y = centerY + radius * Math.sin((node.angle * Math.PI) / 180);
+          return (
+            <motion.line
+              key={`line-${node.id}`}
+              x1={centerX}
+              y1={centerY}
+              x2={x}
+              y2={y}
+              className="ecosystem-line"
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              style={{ opacity: highlightedNode === node.id ? 0.8 : 0.3 }}
+            />
+          );
+        })}
+        
+        {/* Connecting Lines between nodes */}
+        {nodes.map((node, i) => {
+          const nextNode = nodes[(i + 1) % nodes.length];
+          const x1 = centerX + radius * Math.cos((node.angle * Math.PI) / 180);
+          const y1 = centerY + radius * Math.sin((node.angle * Math.PI) / 180);
+          const x2 = centerX + radius * Math.cos((nextNode.angle * Math.PI) / 180);
+          const y2 = centerY + radius * Math.sin((nextNode.angle * Math.PI) / 180);
+          return (
+            <line
+              key={`inter-${node.id}`}
+              x1={x1}
+              y1={y1}
+              x2={x2}
+              y2={y2}
+              stroke="#6c5ce7"
+              strokeWidth="1"
+              strokeDasharray="4 4"
+              opacity="0.1"
+            />
+          );
+        })}
+      </svg>
+
+      {/* Center Node */}
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border-4 border-[#6c5ce7] rounded-full flex items-center justify-center z-10 shadow-[0_0_30px_rgba(108,92,231,0.2)]"
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ duration: 3, repeat: Infinity }}
+      >
+        <div className="text-center">
+          <div className="text-[10px] font-black uppercase tracking-tighter text-[#0a0a0a]">cal</div>
+          <div className="text-[10px] font-black uppercase tracking-tighter text-[#6c5ce7]">pir</div>
+        </div>
+      </motion.div>
+
+      {/* Outer Nodes */}
+      {nodes.map((node) => {
+        const x = centerX + radius * Math.cos((node.angle * Math.PI) / 180);
+        const y = centerY + radius * Math.sin((node.angle * Math.PI) / 180);
+        const isActive = highlightedNode === node.id;
+
+        return (
+          <motion.div
+            key={node.id}
+            className={cn(
+              "absolute w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500",
+              isActive ? "bg-[#6c5ce7] text-white scale-125 shadow-xl" : "bg-[#6c5ce71a] text-[#6c5ce7] hover:scale-110"
+            )}
+            style={{ 
+              left: x, 
+              top: y, 
+              transform: 'translate(-50%, -50%)' 
+            }}
+            whileHover={{ scale: 1.2 }}
+          >
+            {node.icon}
+            <div className="absolute top-full mt-2 whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-[#555] opacity-0 hover:opacity-100 transition-opacity">
+              {node.label}
+            </div>
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default ConnectedEcosystem;
