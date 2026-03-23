@@ -5,15 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
-import ServiceDetail from "./pages/ServiceDetail";
-import Packages from "./pages/Packages";
 import About from "./pages/About";
-import CaseStudies from "./pages/CaseStudies";
-import Assessment from "./pages/Assessment";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
-import ScrollToTopOnRoute from "./components/ui/ScrollToTopOnRoute";
 
 const queryClient = new QueryClient();
 
@@ -23,15 +18,10 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <ScrollToTopOnRoute />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
-          <Route path="/packages" element={<Packages />} />
           <Route path="/about" element={<About />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/assessment" element={<Assessment />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
