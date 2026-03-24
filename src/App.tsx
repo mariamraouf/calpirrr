@@ -12,6 +12,7 @@ import CaseStudies from "./pages/CaseStudies";
 import Assessment from "./pages/Assessment";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTopOnRoute from "./components/ui/ScrollToTopOnRoute";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/assessment" element={<Assessment />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

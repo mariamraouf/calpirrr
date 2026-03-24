@@ -12,11 +12,8 @@ const Navbar = () => {
   const services = [
     { name: 'Website & Branding', href: '/services/website-development' },
     { name: 'CRM & Sales Systems', href: '/services/crm-sales' },
-    { name: 'Marketing & Social', href: '/services/marketing-branding' },
-    { name: 'Operations & HR', href: '/services/operations-hr' },
     { name: 'AI Agent Development', href: '/services/ai-agents' },
     { name: 'Workflow Automation', href: '/services/ai-automation' },
-    { name: 'AI Strategy Consulting', href: '/services/ai-consulting' },
   ];
 
   const navLinks = [
@@ -72,9 +69,9 @@ const Navbar = () => {
             </Link>
           ))}
           
-          <a href="/#contact" className="bg-[#6c5ce7] text-white px-6 py-2.5 rounded-[10px] text-sm font-bold btn-hover shadow-lg shadow-[#6c5ce722]">
+          <Link to="/contact" className="bg-[#6c5ce7] text-white px-6 py-2.5 rounded-[10px] text-sm font-bold btn-hover shadow-lg shadow-[#6c5ce722]">
             Free Consultation
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -101,9 +98,9 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <a href="/#contact" onClick={() => setIsOpen(false)} className="bg-[#6c5ce7] text-white text-center py-4 rounded-[12px] font-bold mt-4">
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="bg-[#6c5ce7] text-white text-center py-4 rounded-[12px] font-bold mt-4">
             Free Consultation
-          </a>
+          </Link>
         </div>
       </div>
     </nav>
