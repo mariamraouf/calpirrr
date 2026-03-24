@@ -7,6 +7,7 @@ import ScrollToTop from '@/components/ui/ScrollToTop';
 import { CheckCircle2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import SectionLabel from '@/components/ui/SectionLabel';
 
 const Packages = () => {
   const packages = [
@@ -17,13 +18,15 @@ const Packages = () => {
       desc: "Perfect for founders who need the essentials to get online and start selling.",
       features: [
         "Professional website (up to 3 pages)",
-        "Basic CRM setup",
+        "Basic CRM setup with contact management",
         "Accounting system setup",
-        "HR basics & compliance",
+        "HR basics (onboarding, compliance)",
         "Brand identity starter kit",
         "Google Analytics setup",
+        "Social media profiles created",
+        "Basic email marketing setup",
         "1 AI chatbot (FAQ support)",
-        "2 weeks support"
+        "2 weeks post-launch support"
       ]
     },
     {
@@ -34,13 +37,15 @@ const Packages = () => {
       desc: "The all-in-one package for ambitious startups scaling fast.",
       features: [
         "Everything in Starter, plus:",
-        "Website up to 6 pages",
-        "Advanced CRM & sales pipeline",
-        "Project management tools",
+        "Website up to 6 pages (advanced design)",
+        "Advanced CRM (pipeline & lead scoring)",
+        "Project management tools setup",
         "5 automated workflows",
+        "SOP creation for core processes",
         "Full brand identity package",
-        "AI lead qualification agent",
-        "30 days support"
+        "Marketing automation setup",
+        "AI agent (support + lead qual)",
+        "30 days post-launch support"
       ]
     },
     {
@@ -50,54 +55,59 @@ const Packages = () => {
       desc: "Complete business infrastructure with unlimited AI. Built to scale.",
       features: [
         "Everything in Growth, plus:",
-        "Website up to 10 pages",
+        "Website up to 10 pages (custom functionality)",
         "Unlimited custom automations",
         "Payroll system setup",
+        "Full HR system with handbook",
         "Full AI agent ecosystem",
         "AI strategy roadmap",
-        "Team training sessions",
-        "90 days support"
+        "Team training sessions (2 hours)",
+        "90 days optimization support",
+        "Priority ongoing advisory"
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black bg-grid">
       <Navbar />
       
-      <section className="hero-gradient pt-40 pb-24 px-6 text-center">
-        <div className="container-custom">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">Packages</h1>
-          <p className="text-xl text-[#555] max-w-[800px] mx-auto">
+      <section className="pt-64 pb-32 px-6 border-b border-white/10">
+        <div className="container-custom text-center">
+          <SectionLabel>Pricing</SectionLabel>
+          <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-12 font-black uppercase tracking-tighter">
+            Launch <br /> <span className="text-[#064e3b]">Packages.</span>
+          </h1>
+          <p className="text-xl md:text-2xl mono text-white/40 max-w-[900px] mx-auto">
             Complete business launch packages that save you 40-60% compared to hiring separate vendors. Start with what you need, upgrade when you're ready.
           </p>
         </div>
       </section>
 
-      <section className="py-24 px-6">
+      <section className="section-padding">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32">
             {packages.map((p, i) => (
               <div key={i} className={cn(
-                "bg-white p-10 rounded-[24px] border border-[#e8e8e8] flex flex-col relative",
-                p.featured && "border-[#6c5ce7] shadow-2xl shadow-[#6c5ce715] scale-105 z-10"
+                "bg-black p-12 border flex flex-col relative",
+                p.featured ? "border-[#064e3b] shadow-[0_0_40px_rgba(6,78,59,0.2)] scale-105 z-10" : "border-white/10"
               )}>
-                {p.featured && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#6c5ce7] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Most Popular</span>}
-                <div className="text-[#6c5ce7] font-bold text-sm uppercase tracking-widest mb-4">{p.badge}</div>
-                <h3 className="text-3xl font-bold mb-2">{p.name}</h3>
-                <div className="text-5xl font-black mb-6">{p.price}</div>
-                <p className="text-[#555] mb-8 text-sm leading-relaxed">{p.desc}</p>
-                <div className="space-y-4 mb-10 flex-grow">
+                {p.featured && <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#064e3b] text-white px-4 py-1 mono text-[0.6rem] uppercase tracking-widest font-bold">Most Popular</div>}
+                <div className="mono text-[0.6rem] uppercase tracking-widest text-[#064e3b] mb-4">{p.badge}</div>
+                <h3 className="text-4xl mb-2">{p.name}</h3>
+                <div className="text-6xl font-black mb-8">{p.price}</div>
+                <p className="text-white/40 mono text-xs leading-relaxed mb-12">{p.desc}</p>
+                <div className="space-y-4 mb-16 flex-grow">
                   {p.features.map((f, j) => (
                     <div key={j} className="flex gap-3">
-                      <CheckCircle2 className="text-[#6c5ce7] shrink-0" size={18} />
-                      <span className="text-sm font-medium text-[#555]">{f}</span>
+                      <CheckCircle2 className="text-[#064e3b] shrink-0" size={16} />
+                      <span className="mono text-[0.7rem] uppercase tracking-widest text-white/60">{f}</span>
                     </div>
                   ))}
                 </div>
                 <Button className={cn(
-                  "w-full py-7 rounded-[10px] font-bold text-lg btn-hover",
-                  p.featured ? "bg-[#6c5ce7] hover:bg-[#5b4cdb]" : "bg-gray-100 text-[#1a1a2e] hover:bg-gray-200"
+                  "w-full py-8 rounded-none font-black text-xl uppercase tracking-tighter btn-hover",
+                  p.featured ? "bg-[#064e3b] hover:bg-[#053e2f] text-white" : "bg-white text-black hover:bg-[#064e3b] hover:text-white"
                 )}>
                   Get Started
                 </Button>
@@ -105,21 +115,37 @@ const Packages = () => {
             ))}
           </div>
 
-          {/* Comparison Table */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold">Full Feature Comparison</h2>
+          {/* Add-ons */}
+          <div className="mb-32">
+            <SectionLabel>Add-Ons</SectionLabel>
+            <h2 className="text-4xl mb-12">Need Something Specific?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { name: "SEO Optimization", price: "$199" },
+                { name: "Design & Branding", price: "$499" },
+                { name: "Social Media (10 posts)", price: "$189" },
+                { name: "Email System Setup", price: "$299" }
+              ].map((add, i) => (
+                <div key={i} className="border border-white/10 p-8 bg-white/5">
+                  <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40 mb-2">{add.name}</div>
+                  <div className="text-3xl font-black text-[#064e3b]">{add.price}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="bg-white rounded-[24px] border border-[#e8e8e8] overflow-hidden">
+
+          {/* Comparison Table */}
+          <div className="border border-white/10 bg-white/5 overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-[#f8f9fa] border-b border-[#e8e8e8]">
-                  <th className="p-6 font-bold text-sm uppercase tracking-widest text-gray-400">Feature</th>
-                  <th className="p-6 font-bold text-sm uppercase tracking-widest text-gray-400">Starter</th>
-                  <th className="p-6 font-bold text-sm uppercase tracking-widest text-gray-400">Growth</th>
-                  <th className="p-6 font-bold text-sm uppercase tracking-widest text-gray-400">Ultimate</th>
+                <tr className="border-b border-white/10">
+                  <th className="p-8 mono text-[0.7rem] uppercase tracking-widest text-white/40">Feature</th>
+                  <th className="p-8 mono text-[0.7rem] uppercase tracking-widest text-white/40">Starter</th>
+                  <th className="p-8 mono text-[0.7rem] uppercase tracking-widest text-white/40">Growth</th>
+                  <th className="p-8 mono text-[0.7rem] uppercase tracking-widest text-white/40">Ultimate</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="mono text-sm">
                 {[
                   { f: "Website Pages", s: "3", g: "6", u: "10" },
                   { f: "CRM Setup", s: "Basic", g: "Advanced", u: "Custom" },
@@ -128,11 +154,11 @@ const Packages = () => {
                   { f: "Payroll Setup", s: "—", g: "—", u: "✓" },
                   { f: "Support Period", s: "2 Weeks", g: "30 Days", u: "90 Days" },
                 ].map((row, i) => (
-                  <tr key={i} className="border-b border-gray-50 last:border-0">
-                    <td className="p-6 font-bold text-[#1a1a2e]">{row.f}</td>
-                    <td className="p-6 text-sm text-[#555]">{row.s}</td>
-                    <td className="p-6 text-sm text-[#555]">{row.g}</td>
-                    <td className="p-6 text-sm text-[#555]">{row.u}</td>
+                  <tr key={i} className="border-b border-white/5 last:border-0">
+                    <td className="p-8 font-bold uppercase">{row.f}</td>
+                    <td className="p-8 text-white/40">{row.s}</td>
+                    <td className="p-8 text-white/40">{row.g}</td>
+                    <td className="p-8 text-white/40">{row.u}</td>
                   </tr>
                 ))}
               </tbody>

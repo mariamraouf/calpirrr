@@ -37,11 +37,15 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
               y1={centerY}
               x2={x}
               y2={y}
-              className="ecosystem-line"
-              initial={{ pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
-              style={{ opacity: highlightedNode === node.id ? 0.8 : 0.3 }}
+              stroke="#064e3b"
+              strokeWidth="2"
+              initial={{ pathLength: 0, opacity: 0.2 }}
+              animate={{ 
+                pathLength: 1, 
+                opacity: highlightedNode === node.id ? 1 : 0.3,
+                strokeWidth: highlightedNode === node.id ? 3 : 2
+              }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
             />
           );
         })}
@@ -60,7 +64,7 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
               y1={y1}
               x2={x2}
               y2={y2}
-              stroke="#6c5ce7"
+              stroke="#064e3b"
               strokeWidth="1"
               strokeDasharray="4 4"
               opacity="0.1"
@@ -71,13 +75,13 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
 
       {/* Center Node */}
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border-4 border-[#6c5ce7] rounded-full flex items-center justify-center z-10 shadow-[0_0_30px_rgba(108,92,231,0.2)]"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-black border-4 border-[#064e3b] flex items-center justify-center z-10 shadow-[0_0_30px_rgba(6,78,59,0.4)]"
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
         <div className="text-center">
-          <div className="text-[10px] font-black uppercase tracking-tighter text-[#0a0a0a]">cal</div>
-          <div className="text-[10px] font-black uppercase tracking-tighter text-[#6c5ce7]">pir</div>
+          <div className="text-[10px] font-black uppercase tracking-tighter text-white">cal</div>
+          <div className="text-[10px] font-black uppercase tracking-tighter text-[#064e3b]">pir</div>
         </div>
       </motion.div>
 
@@ -91,18 +95,17 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
           <motion.div
             key={node.id}
             className={cn(
-              "absolute w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500",
-              isActive ? "bg-[#6c5ce7] text-white scale-125 shadow-xl" : "bg-[#6c5ce71a] text-[#6c5ce7] hover:scale-110"
+              "absolute w-14 h-14 flex items-center justify-center transition-all duration-500 border border-white/10",
+              isActive ? "bg-[#064e3b] text-white scale-125 shadow-[0_0_20px_rgba(6,78,59,0.5)]" : "bg-white/5 text-[#064e3b] hover:scale-110 hover:bg-white/10"
             )}
             style={{ 
               left: x, 
               top: y, 
               transform: 'translate(-50%, -50%)' 
             }}
-            whileHover={{ scale: 1.2 }}
           >
             {node.icon}
-            <div className="absolute top-full mt-2 whitespace-nowrap text-[10px] font-bold uppercase tracking-widest text-[#555] opacity-0 hover:opacity-100 transition-opacity">
+            <div className="absolute top-full mt-2 whitespace-nowrap text-[8px] font-bold uppercase tracking-widest text-white/40 opacity-0 hover:opacity-100 transition-opacity">
               {node.label}
             </div>
           </motion.div>

@@ -12,8 +12,11 @@ const Navbar = () => {
   const services = [
     { name: 'Website & Branding', href: '/services/website-development' },
     { name: 'CRM & Sales Systems', href: '/services/crm-sales' },
+    { name: 'Marketing & Social', href: '/services/marketing-branding' },
+    { name: 'Operations & HR', href: '/services/operations-hr' },
     { name: 'AI Agent Development', href: '/services/ai-agents' },
     { name: 'Workflow Automation', href: '/services/ai-automation' },
+    { name: 'AI Strategy Consulting', href: '/services/ai-consulting' },
   ];
 
   const navLinks = [
@@ -28,9 +31,9 @@ const Navbar = () => {
     <nav className="glass-nav">
       <div className="container-custom h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-[800] tracking-tighter flex items-center">
-          <span className="text-[#0a0a0a]">cal</span>
-          <span className="text-[#6c5ce7]">pir</span>
+        <Link to="/" className="text-3xl font-black tracking-tighter flex items-center uppercase">
+          <span className="text-white">cal</span>
+          <span className="text-[#064e3b]">pir</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -40,17 +43,17 @@ const Navbar = () => {
             onMouseEnter={() => setIsServicesOpen(true)}
             onMouseLeave={() => setIsServicesOpen(false)}
           >
-            <button className="flex items-center gap-1 text-[0.95rem] font-medium text-[#1a1a2e] hover:text-[#6c5ce7] transition-colors py-8">
-              Services <ChevronDown size={16} className={cn("transition-transform", isServicesOpen && "rotate-180")} />
+            <button className="flex items-center gap-1 mono text-[0.7rem] uppercase tracking-widest font-bold text-white/60 hover:text-[#064e3b] transition-colors py-8">
+              Services <ChevronDown size={14} className={cn("transition-transform", isServicesOpen && "rotate-180")} />
             </button>
             
             {isServicesOpen && (
-              <div className="absolute top-full left-0 w-64 bg-white border border-gray-100 shadow-xl rounded-xl p-2 animate-in fade-in slide-in-from-top-2">
+              <div className="absolute top-full left-0 w-72 bg-black border border-white/10 shadow-2xl p-2 animate-in fade-in slide-in-from-top-2">
                 {services.map((s) => (
                   <Link 
                     key={s.name} 
                     to={s.href} 
-                    className="block px-4 py-3 text-sm font-medium text-[#555] hover:text-[#6c5ce7] hover:bg-[#f8f9fa] rounded-lg transition-all"
+                    className="block px-4 py-3 mono text-[0.6rem] uppercase tracking-widest font-bold text-white/40 hover:text-[#064e3b] hover:bg-white/5 transition-all"
                   >
                     {s.name}
                   </Link>
@@ -63,42 +66,42 @@ const Navbar = () => {
             <Link
               key={link.name}
               to={link.href}
-              className="text-[0.95rem] font-medium text-[#1a1a2e] hover:text-[#6c5ce7] transition-colors"
+              className="mono text-[0.7rem] uppercase tracking-widest font-bold text-white/60 hover:text-[#064e3b] transition-colors"
             >
               {link.name}
             </Link>
           ))}
           
-          <Link to="/contact" className="bg-[#6c5ce7] text-white px-6 py-2.5 rounded-[10px] text-sm font-bold btn-hover shadow-lg shadow-[#6c5ce722]">
+          <Link to="/contact" className="bg-[#064e3b] text-white px-8 py-3 rounded-none mono text-[0.7rem] uppercase tracking-widest font-black btn-hover">
             Free Consultation
           </Link>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="lg:hidden text-[#1a1a2e]" onClick={() => setIsOpen(!isOpen)}>
+        <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       <div className={cn(
-        "lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 transition-all duration-300 overflow-hidden shadow-xl",
+        "lg:hidden absolute top-full left-0 right-0 bg-black border-b border-white/10 transition-all duration-300 overflow-hidden shadow-2xl",
         isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
       )}>
-        <div className="flex flex-col p-6 gap-4">
-          <div className="font-bold text-xs uppercase tracking-widest text-gray-400 mb-2">Services</div>
+        <div className="flex flex-col p-8 gap-6">
+          <div className="mono text-[0.6rem] uppercase tracking-widest text-white/20">Services</div>
           {services.map((s) => (
-            <Link key={s.name} to={s.href} onClick={() => setIsOpen(false)} className="text-lg font-bold text-[#1a1a2e]">
+            <Link key={s.name} to={s.href} onClick={() => setIsOpen(false)} className="text-xl font-black uppercase text-white">
               {s.name}
             </Link>
           ))}
-          <div className="h-px bg-gray-100 my-2" />
+          <div className="h-px bg-white/10 my-4" />
           {navLinks.map((link) => (
-            <Link key={link.name} to={link.href} onClick={() => setIsOpen(false)} className="text-lg font-bold text-[#1a1a2e]">
+            <Link key={link.name} to={link.href} onClick={() => setIsOpen(false)} className="text-xl font-black uppercase text-white">
               {link.name}
             </Link>
           ))}
-          <Link to="/contact" onClick={() => setIsOpen(false)} className="bg-[#6c5ce7] text-white text-center py-4 rounded-[12px] font-bold mt-4">
+          <Link to="/contact" onClick={() => setIsOpen(false)} className="bg-[#064e3b] text-white text-center py-6 font-black uppercase tracking-tighter mt-4">
             Free Consultation
           </Link>
         </div>

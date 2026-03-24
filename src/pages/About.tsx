@@ -6,7 +6,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
-import { Target, Users, Shield, Zap } from 'lucide-react';
+import { Zap, Users, Target, Shield } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const reveal = {
@@ -26,60 +28,101 @@ const About = () => {
           <motion.div {...reveal}>
             <SectionLabel>The Mission</SectionLabel>
             <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-16 font-black uppercase tracking-tighter">
-              Built by <br /> <span className="text-[#064e3b]">Founders</span> <br /> for Scale.
+              Built by <br /> <span className="text-[#064e3b]">Founders</span> <br /> for Founders.
             </h1>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
-              <div className="space-y-12">
-                <p className="text-2xl mono text-white/60 leading-relaxed">
-                  We've been in the trenches. We know that starting a business isn't about "ideas"—it's about the systems that support them.
-                </p>
-                <p className="text-lg mono text-white/40 leading-relaxed">
-                  Most founders burn months trying to stitch together separate tools. We fix that by deploying a single, integrated operational engine in days. Our goal is to eliminate the technical friction that stops great companies from growing.
-                </p>
-              </div>
-              <div className="border border-white/10 p-12 bg-white/5 backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-12">
-                  <div>
-                    <div className="text-5xl font-black text-[#064e3b] mb-2">1K+</div>
-                    <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40">Builds Deployed</div>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-black text-[#064e3b] mb-2">7D</div>
-                    <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40">Fastest Launch</div>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-black text-[#064e3b] mb-2">24/7</div>
-                    <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40">AI Uptime</div>
-                  </div>
-                  <div>
-                    <div className="text-5xl font-black text-[#064e3b] mb-2">40%</div>
-                    <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40">Avg. Efficiency Gain</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="text-2xl md:text-3xl mono text-white/60 leading-tight max-w-[900px]">
+              We've been in your shoes. That's why we built the system we wished existed when we were starting out.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="py-32 px-6 border-b border-white/10">
+      {/* Stats Bar */}
+      <section className="py-20 bg-[#064e3b] text-white">
         <div className="container-custom">
-          <SectionLabel>Our Core Principles</SectionLabel>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
-              { title: "Speed as a Feature", icon: <Zap />, desc: "In business, speed is the ultimate competitive advantage. We build fast so you can launch fast." },
-              { title: "Technical Excellence", icon: <Target />, desc: "We don't cut corners. Every system we build is engineered for long-term stability and scale." },
-              { title: "Founder-First", icon: <Users />, desc: "We build what we would want as founders: clear pricing, fast delivery, and zero fluff." },
-              { title: "Security by Design", icon: <Shield />, desc: "Your data is your most valuable asset. We protect it with enterprise-grade security protocols." }
-            ].map((v, i) => (
-              <motion.div key={i} {...reveal} className="space-y-6">
-                <div className="text-[#064e3b]">{React.cloneElement(v.icon as React.ReactElement<any>, { size: 32 })}</div>
-                <h3 className="text-2xl font-bold uppercase tracking-tighter">{v.title}</h3>
-                <p className="text-white/40 mono text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
+              { label: "Businesses Launched", val: "1,000+" },
+              { label: "Fastest Launch", val: "7 Days" },
+              { label: "Avg. Savings", val: "40-60%" },
+              { label: "AI Systems Running", val: "24/7" }
+            ].map((s, i) => (
+              <div key={i}>
+                <div className="text-4xl md:text-6xl font-black mb-2">{s.val}</div>
+                <div className="mono text-[0.6rem] uppercase tracking-widest opacity-60">{s.label}</div>
+              </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="section-padding border-b border-white/10">
+        <div className="container-custom max-w-[900px]">
+          <div className="space-y-20">
+            <div>
+              <h2 className="text-4xl mb-8">The Problem We Solve</h2>
+              <p className="text-xl mono text-white/40 leading-relaxed">
+                Starting a business should be exciting. Instead, most founders spend their first months drowning in decisions: which website builder, which CRM, which payment processor, which HR tool. By the time everything is "set up," they've burned through months and thousands of dollars — and half their tools don't even talk to each other.
+              </p>
+              <p className="text-xl mono text-white/40 leading-relaxed mt-8">
+                We built Calpir to fix that. One team, one package, one integrated system — launched in days, not months. We handle the website, CRM, operations, branding, marketing, and now AI automations and intelligent agents. Everything connected, everything working together from day one.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-4xl mb-8">Why AI Changes Everything</h2>
+              <p className="text-xl mono text-white/40 leading-relaxed">
+                In 2026, launching a business without AI is like launching one without a website in 2010 — technically possible, but a massive disadvantage. AI agents can handle your customer support at 2 AM. Workflow automation can eliminate 20+ hours of manual work per week. AI-powered lead qualification can double your sales team's efficiency.
+              </p>
+              <p className="text-xl mono text-white/40 leading-relaxed mt-8">
+                Most founders know they should be using AI, but they don't know where to start. That's where we come in. We don't just set up your business — we set it up with AI baked into every layer.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-4xl mb-8">How We Work</h2>
+              <p className="text-xl mono text-white/40 leading-relaxed">
+                We speak plainly, set honest expectations, and deliver exactly what we promise. No inflated timelines, no surprise fees, no excuses. Every engagement starts with a free 30-minute consultation where we listen, ask the right questions, and map out what your business actually needs.
+              </p>
+              <p className="text-xl mono text-white/40 leading-relaxed mt-8">
+                Once we start, you get a dedicated team: developers building your website, designers crafting your brand, automation specialists wiring up your AI agents and workflows. You stay in the loop with regular updates, but you don't have to manage a thing.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="section-padding border-b border-white/10 bg-white/5">
+        <div className="container-custom">
+          <SectionLabel>Our Values</SectionLabel>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { title: "Speed Over Perfection", icon: <Zap />, desc: "In business, speed is the ultimate competitive advantage. We build fast so you can launch fast." },
+              { title: "Integration Over Isolation", icon: <Users />, desc: "Disconnected tools are a liability. We build unified systems where everything talks to everything." },
+              { title: "AI-First Thinking", icon: <Target />, desc: "We don't just add AI as an afterthought. We build systems with AI baked into the core architecture." },
+              { title: "Radical Transparency", icon: <Shield />, desc: "No hidden fees, no technical jargon, no fluff. Just clear communication and results." }
+            ].map((v, i) => (
+              <div key={i} className="border border-white/10 p-12 bg-black card-hover">
+                <div className="text-[#064e3b] mb-8">
+                  {React.cloneElement(v.icon as React.ReactElement<any>, { size: 32 })}
+                </div>
+                <h3 className="text-2xl mb-6">{v.title}</h3>
+                <p className="text-white/40 mono text-xs leading-relaxed">{v.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-padding text-center">
+        <div className="container-custom">
+          <h2 className="text-5xl md:text-8xl mb-12 font-black uppercase tracking-tighter">Let's Build <br /> Something Together.</h2>
+          <Button asChild className="bg-[#064e3b] hover:bg-[#053e2f] text-white px-16 py-10 rounded-none font-black text-2xl uppercase tracking-tighter transition-all btn-hover">
+            <Link to="/contact">Book Free Consultation</Link>
+          </Button>
         </div>
       </section>
 
