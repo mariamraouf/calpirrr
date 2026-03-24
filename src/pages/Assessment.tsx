@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle2, ArrowRight, RefreshCcw, Share2, AlertTriangle } from 'lucide-react';
+import { CheckCircle2, ArrowRight, RefreshCcw, Share2, AlertTriangle, TrendingDown, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -28,13 +28,13 @@ const Assessment = () => {
       ]
     },
     {
-      id: 'industry',
-      title: "What's your industry/niche?",
+      id: 'burn',
+      title: "What is your current monthly burn rate?",
       options: [
-        { label: "E-commerce / Product-based", value: "ecommerce" },
-        { label: "SaaS / Tech", value: "saas" },
-        { label: "Professional Services (consulting, agency, legal, etc.)", value: "services" },
-        { label: "Local / Service-based (cleaning, landscaping, medical, etc.)", value: "local" }
+        { label: "Under $1,000 (Bootstrapped)", value: "low" },
+        { label: "$1,000 - $5,000", value: "mid" },
+        { label: "$5,000 - $20,000", value: "high" },
+        { label: "$20,000+ (VC Backed / High Growth)", value: "vc" }
       ]
     },
     {
@@ -59,7 +59,7 @@ const Assessment = () => {
     },
     {
       id: 'hours',
-      title: "How many hours per week do you or your team spend on repetitive manual tasks?",
+      title: "How many hours per week do you spend on repetitive manual tasks?",
       options: [
         { label: "5 or less", value: 5 },
         { label: "5-15 hours", value: 15 },
@@ -68,18 +68,12 @@ const Assessment = () => {
       ]
     },
     {
-      id: 'systems',
-      title: "Which of these do you currently have set up?",
-      multi: true,
+      id: 'fatigue',
+      title: "How many tools are you paying for but not using effectively?",
       options: [
-        { label: "Professional website", value: "website" },
-        { label: "CRM system", value: "crm" },
-        { label: "Email marketing", value: "email" },
-        { label: "Social media presence", value: "social" },
-        { label: "Automated workflows", value: "automation" },
-        { label: "AI chatbot or agent", value: "ai" },
-        { label: "Analytics dashboard", value: "analytics" },
-        { label: "SOPs / documented processes", value: "sops" }
+        { label: "0-2 tools", value: "low" },
+        { label: "3-5 tools", value: "mid" },
+        { label: "6+ tools (Tool Fatigue)", value: "high" }
       ]
     },
     {
@@ -109,46 +103,28 @@ const Assessment = () => {
 
   const handleAnswer = (value: any) => {
     const currentQ = questions[step];
-    if (currentQ.multi) {
-      const currentAnswers = answers[currentQ.id] || [];
-      const newAnswers = currentAnswers.includes(value) 
-        ? currentAnswers.filter((a: any) => a !== value)
-        : [...currentAnswers, value];
-      setAnswers({ ...answers, [currentQ.id]: newAnswers });
+    setAnswers({ ...answers, [currentQ.id]: value });
+    if (step < questions.length - 1) {
+      setStep(step + 1);
     } else {
-      setAnswers({ ...answers, [currentQ.id]: value });
-      if (step < questions.length - 1) {
-        setStep(step + 1);
-      } else {
-        setShowResults(true);
-      }
+      setShowResults(true);
     }
   };
 
   const calculateResults = () => {
-    // Score calculation
     let score = 0;
     if (answers.stage === 'pre-launch') score += 1;
     else if (answers.stage === 'just-launched') score += 3;
     else if (answers.stage === 'growing') score += 6;
     else score += 8;
 
-    if (answers.website === 'pro') score += 1;
-    if (answers.crm === 'pro') score += 1;
-
-    // Wasted money
     const wastedMoney = (answers.hours || 0) * 50 * 4;
     
-    // Package recommendation
     let pkg = "Starter";
     if (answers.budget === 'growth' || answers.stage === 'growing') pkg = "Growth";
     if (answers.budget === 'ultimate' || answers.budget === 'enterprise' || answers.stage === 'established') pkg = "Ultimate";
 
-    // Missing systems
-    const allSystems = ['website', 'crm', 'email', 'social', 'automation', 'ai', 'analytics', 'sops'];
-    const missing = allSystems.filter(s => !(answers.systems || []).includes(s));
-
-    return { score, wastedMoney, pkg, missing };
+    return { score, wastedMoney, pkg };
   };
 
   const results = calculateResults();
@@ -185,7 +161,7 @@ const Assessment = () => {
                         onClick={() => handleAnswer(opt.value)}
                         className={cn(
                           "p-8 text-left border transition-all font-bold text-xl uppercase tracking-tighter",
-                          (questions[step].multi ? (answers[questions[step].id] || []).includes(opt.value) : answers[questions[step].id] === opt.value)
+                          answers[questions[step].id] === opt.value
                             ? "border-[#064e3b] bg-[#064e3b]/10 text-[#064e3b]"
                             : "border-white/10 bg-white/5 hover:border-[#064e3b]/50 hover:bg-white/10"
                         )}
@@ -194,14 +170,6 @@ const Assessment = () => {
                       </button>
                     ))}
                   </div>
-                  {questions[step].multi && (
-                    <Button 
-                      onClick={() => setStep(step + 1)}
-                      className="w-full bg-[#064e3b] hover:bg-[#053e2f] text-white py-10 rounded-none font-black text-2xl uppercase tracking-tighter"
-                    >
-                      Continue <ArrowRight className="ml-2" />
-                    </Button>
-                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -236,36 +204,8 @@ const Assessment = () => {
                 </div>
               </div>
 
-              <div className="border border-white/10 p-12 bg-white/5">
-                <h3 className="text-3xl mb-12">Your Missing Systems</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {results.missing.map((m) => (
-                    <div key={m} className="flex gap-4">
-                      <AlertTriangle className="text-red-900 shrink-0" size={20} />
-                      <div>
-                        <div className="font-black uppercase text-sm mb-1">{m.replace('-', ' ')}</div>
-                        <p className="mono text-[0.7rem] text-white/40">
-                          {m === 'website' && "You're invisible to 87% of customers who research online before buying."}
-                          {m === 'crm' && "You're losing an estimated 30-40% of leads that fall through the cracks."}
-                          {m === 'email' && "You're leaving the most profitable marketing channel on the table."}
-                          {m === 'automation' && "Your team is doing work that machines could handle in seconds."}
-                          {m === 'ai' && "Your competitors who use AI respond 100x faster and convert at 2x the rate."}
-                          {m === 'analytics' && "You're making decisions based on gut feeling instead of data."}
-                          {m === 'sops' && "Every time someone leaves, your knowledge walks out the door."}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <div className="bg-[#064e3b] p-16 text-center">
                 <h3 className="text-4xl md:text-6xl mb-8">Recommended Package: <br /> <span className="text-white">{results.pkg}</span></h3>
-                <p className="text-xl mono mb-12 opacity-80">
-                  {answers.bottleneck === 'visibility' ? "Get a professional, SEO-optimized website live in 7 days." :
-                   answers.bottleneck === 'conversion' ? "Deploy an AI lead qualification chatbot on your site." :
-                   "Run an automation audit to identify highest-impact opportunities."}
-                </p>
                 <Button asChild className="bg-white text-black hover:bg-black hover:text-white px-16 py-10 rounded-none font-black text-2xl uppercase tracking-tighter transition-all">
                   <Link to="/contact">Book Free Consultation</Link>
                 </Button>

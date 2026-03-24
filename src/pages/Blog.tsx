@@ -12,17 +12,31 @@ const Blog = () => {
   const posts = [
     {
       id: "01",
-      tag: "AI_SYSTEMS",
-      title: "5 AI Agents Every Startup Should Deploy in 2026",
-      excerpt: "The technical advantage of autonomous support and sales agents.",
-      link: "/blog/ai-agents-for-startups"
+      tag: "AI_TOOLS",
+      title: "OpenClaw vs. Claude Cowork: Which AI Partner Wins?",
+      excerpt: "A deep dive into the two most powerful AI agents for founders in 2026.",
+      link: "/blog/openclaw-vs-claude-cowork"
     },
     {
       id: "02",
-      tag: "AUTOMATION",
-      title: "The Complete Guide to Automating Your Small Business",
-      excerpt: "How to eliminate 20+ hours of manual work per week.",
-      link: "/blog/automate-small-business"
+      tag: "LEGAL",
+      title: "The Founder's Guide to Setting Up Your LLC (Without the Headache)",
+      excerpt: "Stop overpaying lawyers. Here is the exact path to legalizing your startup.",
+      link: "/blog/setup-my-llc"
+    },
+    {
+      id: "03",
+      tag: "OPERATIONS",
+      title: "ClickUp Setup: Stop Drowning in Tasks",
+      excerpt: "The exact hierarchy and automation rules we use to manage 7-figure companies.",
+      link: "/blog/clickup-setup"
+    },
+    {
+      id: "04",
+      tag: "STRATEGY",
+      title: "Startup Burn: How to Not Waste Your First $50k",
+      excerpt: "Most founders burn their first check on the wrong things. Don't be one of them.",
+      link: "/blog/how-to-not-waste-money"
     }
   ];
 

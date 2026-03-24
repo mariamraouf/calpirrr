@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, TrendingUp, Clock, Zap, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, TrendingUp, Clock, Zap, CheckCircle2, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -21,75 +21,69 @@ const CaseStudies = () => {
   const cases = [
     {
       id: "01",
-      client: "NovaBright",
-      industry: "E-commerce Startup",
-      title: "Scaling to $50k MRR in 90 Days",
-      challenge: "Sarah had a product idea and a Shopify store she'd been tinkering with for 3 months. Disconnected tools, no CRM, losing leads, manually answering DMs at all hours.",
+      client: "Amad Health",
+      industry: "HealthTech Startup // Saudi Arabia",
+      title: "From Zero to Full Infrastructure",
+      challenge: "A startup in Saudi Arabia with nothing but a vision. No digital presence, no systems, and no technical foundation.",
       built: [
-        "Custom e-commerce website with conversion-optimized product pages",
-        "GoHighLevel CRM with automated lead nurture sequences",
-        "AI chatbot handling product questions and order tracking",
-        "Automated email flows (welcome, abandoned cart, post-purchase)",
-        "Social media content calendar with 30 days of content",
-        "Analytics dashboard tracking revenue, traffic, and conversion"
+        "Complete bilingual (Arabic/English) high-conversion website",
+        "Integrated patient management CRM",
+        "Automated appointment scheduling & reminders",
+        "Full brand identity and digital assets",
+        "Operational workflows for medical staff"
       ],
-      timeline: "10 days (Growth package)",
+      timeline: "21 days",
       results: [
-        { label: "Growth", value: "450%", icon: <TrendingUp size={20} /> },
-        { label: "Saved", value: "15h/wk", icon: <Clock size={20} /> }
+        { label: "Launch", value: "100%", icon: <Zap size={20} /> },
+        { label: "Market Ready", value: "Day 1", icon: <Globe size={20} /> }
       ],
-      quote: "What would have taken us 3 months of vendor management happened in a week and a half.",
-      author: "Sarah K., Founder",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+      quote: "Calpir built our entire company's digital nervous system from scratch. We went from an idea to a fully operational startup in weeks.",
+      author: "Founder, Amad Health",
+      image: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?auto=format&fit=crop&q=80&w=800"
     },
     {
       id: "02",
-      client: "UrbanStack",
-      industry: "B2B SaaS",
-      title: "60% Support Cost Reduction",
-      challenge: "Marcus had a working product but terrible sales infrastructure. Leads came in through 4 different channels, nothing was tracked, and his 3-person team was spending more time on admin than selling.",
+      client: "Create More Productions",
+      industry: "Media Production // Michigan, USA",
+      title: "The Production Powerhouse System",
+      challenge: "A Michigan-based production company struggling with fragmented tools and manual project tracking.",
       built: [
-        "Professional 8-page marketing website with demo booking",
-        "HubSpot CRM with multi-stage sales pipeline",
-        "AI lead qualification agent (asks company size, budget, timeline)",
-        "Automated drip campaigns for cold, warm, and hot leads",
-        "Internal knowledge base AI for the team",
-        "Operations SOPs and project management system",
-        "Full analytics: pipeline velocity, lead source tracking"
+        "End-to-end business management system",
+        "Automated client onboarding and contract signing",
+        "Project management integration with real-time tracking",
+        "Financial automation for invoicing and payments",
+        "Custom CRM for high-ticket production leads"
       ],
-      timeline: "21 days (Ultimate package)",
+      timeline: "14 days",
       results: [
-        { label: "Deflection", value: "75%", icon: <TrendingUp size={20} /> },
-        { label: "Response", value: "< 30s", icon: <Clock size={20} /> }
+        { label: "Efficiency", value: "+85%", icon: <TrendingUp size={20} /> },
+        { label: "Admin Saved", value: "30h/wk", icon: <Clock size={20} /> }
       ],
-      quote: "The AI chatbot they set up handles 75% of our customer inquiries now. Our support costs dropped by half.",
-      author: "Marcus T., CEO",
-      image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
+      quote: "Our entire business now runs on a single, unified system. No more chasing emails or lost files.",
+      author: "CEO, Create More Productions",
+      image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&q=80&w=800"
     },
     {
       id: "03",
-      client: "GreenLoop",
-      industry: "Sustainable Services",
-      title: "Automated Sales Pipeline",
-      challenge: "Lena and her co-founder had a sustainable cleaning service taking off locally but zero digital infrastructure. Bookings by phone, invoices by hand, no online presence.",
+      client: "7-Figure Enterprise",
+      industry: "Professional Services // Canada",
+      title: "Scaling a Canadian Giant",
+      challenge: "A 7+ figure company in Canada outgrowing their legacy systems and needing a modern, AI-ready infrastructure.",
       built: [
-        "Booking-optimized website with online scheduling",
-        "CRM with automated booking confirmations and reminders",
-        "AI chatbot for quote requests and FAQ",
-        "Automated invoicing and payment reminders",
-        "Google Business Profile optimization",
-        "Local SEO setup",
-        "Social media content (15 posts/month)",
-        "Simple HR onboarding system for new cleaners"
+        "Enterprise-grade website architecture",
+        "Advanced AI-powered lead qualification system",
+        "Custom workflow automations for high-volume operations",
+        "Integrated CRM with 7-figure pipeline management",
+        "Automated reporting and data visualization"
       ],
-      timeline: "12 days (Growth package + add-ons)",
+      timeline: "28 days",
       results: [
-        { label: "Bookings", value: "+300%", icon: <TrendingUp size={20} /> },
-        { label: "Saved", value: "20h/wk", icon: <Clock size={20} /> }
+        { label: "Revenue", value: "7-Figure+", icon: <TrendingUp size={20} /> },
+        { label: "AI Deflection", value: "65%", icon: <Zap size={20} /> }
       ],
-      quote: "We went from idea to taking our first paying customers in under two weeks. The automation setup alone saves us 20+ hours a week.",
-      author: "Lena M., Co-founder",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
+      quote: "Calpir didn't just build a website; they built a scalable engine that supports our 7-figure growth.",
+      author: "Managing Director, Canada",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
@@ -104,7 +98,6 @@ const CaseStudies = () => {
             <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-16 font-black uppercase tracking-tighter">
               Case <br /> <span className="text-[#064e3b]">Studies.</span>
             </h1>
-            <p className="text-2xl mono text-white/40 max-w-[800px]">Real results from real businesses. See how we've helped founders launch faster, automate smarter, and grow without burning out.</p>
           </motion.div>
         </div>
       </section>
