@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ExternalLink, TrendingUp, Clock, Zap } from 'lucide-react';
+import { ArrowRight, TrendingUp, Clock, Zap } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -22,13 +22,10 @@ const CaseStudies = () => {
       id: "01",
       client: "NovaBright",
       industry: "E-commerce",
-      title: "Scaling from $0 to $50k MRR in 90 Days",
-      challenge: "NovaBright had a great product but no digital infrastructure. They were managing orders via Instagram DMs and spreadsheets.",
-      solution: "We deployed a high-conversion Shopify store, integrated a custom CRM for customer retention, and automated their fulfillment notifications.",
+      title: "Scaling to $50k MRR in 90 Days",
       results: [
-        { label: "Revenue Growth", value: "450%", icon: <TrendingUp size={20} /> },
-        { label: "Manual Work Saved", value: "25h/wk", icon: <Clock size={20} /> },
-        { label: "Conversion Rate", value: "4.2%", icon: <Zap size={20} /> }
+        { label: "Growth", value: "450%", icon: <TrendingUp size={20} /> },
+        { label: "Saved", value: "25h/wk", icon: <Clock size={20} /> }
       ],
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
     },
@@ -36,117 +33,57 @@ const CaseStudies = () => {
       id: "02",
       client: "UrbanStack",
       industry: "SaaS",
-      title: "Reducing Support Costs by 60% with AI Agents",
-      challenge: "UrbanStack was overwhelmed with basic support tickets, leading to 24-hour response times and high churn.",
-      solution: "We built and trained a custom AI support agent on their entire documentation and integrated it with their Slack and Intercom.",
+      title: "60% Support Cost Reduction",
       results: [
-        { label: "Support Deflection", value: "78%", icon: <TrendingUp size={20} /> },
-        { label: "Response Time", value: "< 5s", icon: <Clock size={20} /> },
-        { label: "Churn Reduction", value: "15%", icon: <Zap size={20} /> }
+        { label: "Deflection", value: "78%", icon: <TrendingUp size={20} /> },
+        { label: "Response", value: "< 5s", icon: <Clock size={20} /> }
       ],
       image: "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=800"
-    },
-    {
-      id: "03",
-      client: "GreenLoop",
-      industry: "Professional Services",
-      title: "Automating the Entire Sales Pipeline",
-      challenge: "GreenLoop's sales team was spending 70% of their time on data entry and manual follow-ups instead of closing deals.",
-      solution: "We implemented an end-to-end automated pipeline: from LinkedIn lead capture to automated booking and contract generation.",
-      results: [
-        { label: "Lead Volume", value: "+120%", icon: <TrendingUp size={20} /> },
-        { label: "Sales Cycle", value: "-40%", icon: <Clock size={20} /> },
-        { label: "ROI", value: "12x", icon: <Zap size={20} /> }
-      ],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black bg-grid">
       <Navbar />
       
-      {/* Hero */}
-      <section className="hero-gradient pt-40 pb-24 px-6">
+      <section className="pt-64 pb-32 px-6 border-b border-white/10">
         <div className="container-custom">
-          <motion.div {...reveal} className="max-w-[800px]">
-            <SectionLabel>Success Stories</SectionLabel>
-            <h1 className="text-5xl md:text-7xl font-black mb-8 text-[#1a1a2e] leading-tight">
-              Real Results for <br /> <span className="purple-gradient-text">Real Founders.</span>
+          <motion.div {...reveal}>
+            <SectionLabel>Proof of Concept</SectionLabel>
+            <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-16 font-black uppercase tracking-tighter">
+              Case <br /> <span className="text-[#064e3b]">Studies.</span>
             </h1>
-            <p className="text-xl text-[#555] leading-relaxed">
-              We don't just build systems; we drive business outcomes. Explore how we've helped startups and established businesses scale through technical excellence.
-            </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Case Studies List */}
-      <section className="py-24 px-6">
+      <section className="py-32 px-6">
         <div className="container-custom">
-          <div className="space-y-32">
-            {cases.map((c, index) => (
-              <motion.div 
-                key={c.id}
-                {...reveal}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}
-              >
-                <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <span className="text-[#6c5ce7] font-bold uppercase tracking-widest text-sm">[{c.id}] // {c.industry}</span>
-                    <div className="h-px flex-grow bg-gray-100" />
+          <div className="grid grid-cols-1 gap-32">
+            {cases.map((c, i) => (
+              <motion.div key={c.id} {...reveal} className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div className={i % 2 !== 0 ? 'lg:order-2' : ''}>
+                  <div className="mono text-[#064e3b] text-xs font-bold mb-6 tracking-widest">
+                    [{c.id}] // {c.industry}
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e]">{c.title}</h2>
-                  <div className="space-y-4">
-                    <p className="text-[#555] leading-relaxed"><strong className="text-[#1a1a2e]">The Challenge:</strong> {c.challenge}</p>
-                    <p className="text-[#555] leading-relaxed"><strong className="text-[#1a1a2e]">The Solution:</strong> {c.solution}</p>
-                  </div>
-                  
-                  <div className="grid grid-cols-3 gap-4 pt-4">
-                    {c.results.map((res, i) => (
-                      <div key={i} className="bg-[#f8f9fa] p-4 rounded-xl border border-gray-100">
-                        <div className="text-[#6c5ce7] mb-2">{res.icon}</div>
-                        <div className="text-xl font-black text-[#1a1a2e]">{res.value}</div>
-                        <div className="text-[10px] font-bold uppercase tracking-widest text-gray-400">{res.label}</div>
+                  <h2 className="text-4xl md:text-6xl mb-8">{c.title}</h2>
+                  <div className="grid grid-cols-2 gap-8 mb-12">
+                    {c.results.map((res, idx) => (
+                      <div key={idx} className="border border-white/10 p-6 bg-white/5">
+                        <div className="text-3xl font-black text-[#064e3b] mb-1">{res.value}</div>
+                        <div className="mono text-[0.6rem] uppercase tracking-widest text-white/40">{res.label}</div>
                       </div>
                     ))}
                   </div>
-
-                  <Button variant="outline" className="border-[#e8e8e8] text-[#1a1a2e] px-8 py-6 rounded-[10px] font-bold group">
-                    View Full Case Study <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" size={18} />
+                  <Button variant="outline" className="border-white/10 rounded-none px-8 py-6 font-black uppercase tracking-tighter hover:bg-white hover:text-black">
+                    View Full Report <ArrowRight className="ml-2" />
                   </Button>
                 </div>
-                
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-[#6c5ce70a] rounded-[32px] -z-10 transition-transform group-hover:scale-105" />
-                  <div className="aspect-[4/3] rounded-[24px] overflow-hidden border border-gray-100 shadow-2xl">
-                    <img src={c.image} alt={c.client} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  </div>
-                  <div className="absolute bottom-8 left-8 bg-white/90 backdrop-blur-md p-6 rounded-2xl border border-white/20 shadow-xl">
-                    <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Client</div>
-                    <div className="text-xl font-black text-[#1a1a2e]">{c.client}</div>
-                  </div>
+                <div className={`aspect-video bg-white/5 border border-white/10 overflow-hidden ${i % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <img src={c.image} alt={c.client} className="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700" />
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 px-6">
-        <div className="container-custom">
-          <div className="bg-[#0a0a2e] rounded-[32px] p-12 md:p-24 text-white text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-96 h-96 bg-[#6c5ce710] rounded-full -mr-48 -mt-48 blur-3xl" />
-            <div className="relative z-10">
-              <h2 className="text-4xl md:text-6xl font-bold mb-8">Ready to be our next <br /> success story?</h2>
-              <p className="text-xl mb-12 opacity-80 max-w-[700px] mx-auto">
-                Let's build the systems that will take your business to the next level.
-              </p>
-              <Button asChild className="bg-[#6c5ce7] hover:bg-[#5b4cdb] text-white px-12 py-8 rounded-[10px] text-xl font-bold btn-hover shadow-2xl shadow-[#6c5ce733]">
-                <a href="https://calendly.com/calpir" target="_blank" rel="noopener noreferrer">Book Your Free Call</a>
-              </Button>
-            </div>
           </div>
         </div>
       </section>
