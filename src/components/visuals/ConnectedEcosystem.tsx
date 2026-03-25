@@ -79,9 +79,12 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
-        <div className="text-center">
-          <div className="text-[10px] font-black uppercase tracking-tighter text-white">cal</div>
-          <div className="text-[10px] font-black uppercase tracking-tighter text-[#064e3b]">pir</div>
+        <div className="text-center p-2">
+          <img 
+            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+            alt="Calpir Logo" 
+            className="w-full h-auto object-contain"
+          />
         </div>
       </motion.div>
 

@@ -31,9 +31,12 @@ const Navbar = () => {
     <nav className="glass-nav">
       <div className="container-custom h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-3xl font-black tracking-tighter flex items-center uppercase">
-          <span className="text-white">cal</span>
-          <span className="text-[#064e3b]">pir</span>
+        <Link to="/" className="flex items-center">
+          <img 
+            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+            alt="Calpir Logo" 
+            className="h-10 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}
