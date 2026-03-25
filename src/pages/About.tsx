@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/ui/ScrollToTop';
 import { Zap, Users, Target, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import SystemStatus from '@/components/visuals/SystemStatus';
 
 const About = () => {
   const reveal = {
@@ -30,9 +31,14 @@ const About = () => {
             <h1 className="text-6xl md:text-[8rem] leading-[0.85] mb-16 font-black uppercase tracking-tighter">
               Built by <br /> <span className="text-[#064e3b]">Founders</span> <br /> for Founders.
             </h1>
-            <p className="text-2xl md:text-3xl mono text-white/60 leading-tight max-w-[900px]">
-              We've been in your shoes. That's why we built the system we wished existed when we were starting out.
-            </p>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-end">
+              <p className="text-2xl md:text-3xl mono text-white/60 leading-tight">
+                We've been in your shoes. That's why we built the system we wished existed when we were starting out.
+              </p>
+              <div className="max-w-[400px] w-full ml-auto">
+                <SystemStatus />
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, BarChart3, Megaphone, Settings, Bot, Zap, Brain, CheckCircle2, Star } from 'lucide-react';
+import { ArrowRight, Globe, BarChart3, Megaphone, Settings, Bot, Zap, Brain, CheckCircle2, Star, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -10,6 +10,9 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ScrollToTop from '@/components/ui/ScrollToTop';
 import { Button } from '@/components/ui/button';
 import ConnectedEcosystem from '@/components/visuals/ConnectedEcosystem';
+import ROICalculator from '@/components/home/ROICalculator';
+import FAQ from '@/components/home/FAQ';
+import { Input } from '@/components/ui/input';
 
 const Index = () => {
   const reveal = {
@@ -212,6 +215,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ROI Calculator Integration */}
+      <ROICalculator />
+
       {/* Process Section */}
       <section className="section-padding border-b border-white/10 bg-white/5">
         <div className="container-custom">
@@ -259,6 +265,30 @@ const Index = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <FAQ />
+
+      {/* Newsletter Section */}
+      <section className="section-padding border-b border-white/10 bg-white/5">
+        <div className="container-custom">
+          <div className="max-w-[800px] mx-auto text-center">
+            <SectionLabel>Intelligence</SectionLabel>
+            <h2 className="text-4xl md:text-6xl mb-8">Get the Founder's <br /> Stack Newsletter.</h2>
+            <p className="text-xl mono text-white/40 mb-12">Weekly insights on AI agents, workflow automation, and scaling your business infrastructure.</p>
+            <form className="flex flex-col sm:flex-row gap-4">
+              <Input 
+                type="email" 
+                placeholder="ENTER YOUR EMAIL" 
+                className="bg-black border-white/10 rounded-none h-16 text-xl mono focus:border-[#064e3b] flex-grow"
+              />
+              <Button className="bg-[#064e3b] hover:bg-[#053e2f] text-white px-12 py-8 rounded-none font-black text-xl uppercase tracking-tighter">
+                Subscribe <Mail className="ml-2" size={20} />
+              </Button>
+            </form>
           </div>
         </div>
       </section>
