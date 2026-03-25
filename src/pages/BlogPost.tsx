@@ -1,4 +1,4 @@
-' characters.">
+' characters in JSX.">
 "use client";
 
 import React from 'react';
