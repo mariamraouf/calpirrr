@@ -81,9 +81,9 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
       >
         <div className="text-center p-2">
           <img 
-            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/0df30f7117ba402543f57c246980c16d.jpg" 
             alt="Calpir Logo" 
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain mix-blend-multiply"
           />
         </div>
       </motion.div>
