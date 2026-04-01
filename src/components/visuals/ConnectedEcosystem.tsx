@@ -75,15 +75,15 @@ const ConnectedEcosystem = ({ className, highlightedNode }: { className?: string
 
       {/* Center Node */}
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white border-4 border-[#064e3b] flex items-center justify-center z-10 shadow-[0_0_30px_rgba(6,78,59,0.4)] rounded-full overflow-hidden"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 flex items-center justify-center z-10"
         animate={{ scale: [1, 1.05, 1] }}
         transition={{ duration: 3, repeat: Infinity }}
       >
         <div className="text-center p-2">
           <img 
-            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+            src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/aaf13a2acb2d6c1af5d5955db40d3525.png" 
             alt="Calpir Logo" 
-            className="w-full h-auto object-contain mix-blend-multiply"
+            className="w-full h-auto object-contain"
           />
         </div>
       </motion.div>

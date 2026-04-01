@@ -32,11 +32,11 @@ const Navbar = () => {
       <div className="container-custom h-20 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center group">
-          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/10 bg-white flex items-center justify-center">
+          <div className="relative h-10 w-10 overflow-hidden">
             <img 
-              src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+              src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/aaf13a2acb2d6c1af5d5955db40d3525.png" 
               alt="Calpir Logo" 
-              className="h-full w-full object-contain mix-blend-multiply"
+              className="h-full w-full object-contain"
             />
           </div>
           <span className="ml-3 text-xl font-black tracking-tighter uppercase group-hover:text-[#064e3b] transition-colors">Calpir</span>
