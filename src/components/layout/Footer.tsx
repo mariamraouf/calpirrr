@@ -10,12 +10,15 @@ const Footer = () => {
       <div className="container-custom grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
         {/* Column 1 */}
         <div className="space-y-6">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
-              alt="Calpir Logo" 
-              className="h-12 w-auto object-contain"
-            />
+          <Link to="/" className="flex items-center group">
+            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/10 bg-white">
+              <img 
+                src="dyad-media://media/hopping-hedgehog-flip/.dyad/media/a68da3c63b626b29db89154d9fd6e168.jpg" 
+                alt="Calpir Logo" 
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <span className="ml-3 text-2xl font-black tracking-tighter uppercase text-white">Calpir</span>
           </Link>
           <p className="text-[0.95rem] leading-relaxed mono text-white/40">
             All-in-one business launch with AI-powered systems. Built by founders, for founders.
